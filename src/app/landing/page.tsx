@@ -29,7 +29,7 @@ export default function LandingPage() {
           <section className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#05192F] divide-x divide-[#05192F]">
             <div className="flex flex-col items-center justify-center py-10 px-4">
               <Image
-                src="/robot.png"
+                src="/pics/robot.png"
                 width={250}
                 height={420}
                 alt="Costa Rica Bag"

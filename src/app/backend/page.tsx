@@ -30,7 +30,7 @@ export default function RoutingCardsPage() {
         </h1>
         <div className="w-full flex justify-center mb-10">
           <Image
-            src="/back-tech-stack (1).png"
+            src="/pics/back-tech-stack (1).png"
             alt="Tech Stack"
             width={1600}
             height={500}
@@ -165,7 +165,7 @@ export default function RoutingCardsPage() {
       </p>
       <div className="w-full flex justify-center mb-20">
         <Image
-          src="/sys-arch.png"
+          src="/pics/sys-arch.png"
           alt="Zeno AI System Architecture Diagram"
           width={1400}
           height={700}
@@ -191,7 +191,7 @@ export default function RoutingCardsPage() {
       </p>
       <div className="w-full flex justify-center mb-20">
         <Image
-          src="/erdd.png"
+          src="/pics/erdd.png"
           alt="Zeno AI Entity Relationship Diagram"
           width={1400}
           height={700}
@@ -309,7 +309,7 @@ export default function RoutingCardsPage() {
               rel=""
             >
               <Image
-                src="/swagger.png"
+                src="/pics/swagger.png"
                 alt="fetchAdmin.test.tsx example"
                 width={600}
                 height={100}

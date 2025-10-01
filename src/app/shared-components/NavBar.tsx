@@ -17,7 +17,7 @@ export default function NavBar({
 }: {
   variant?: "light" | "dark";
 }) {
-  const logoSrc = variant === "dark" ? "/logoo.png" : "/blue-logo.png";
+  const logoSrc = variant === "dark" ? "/pics/logoo.png" : "/pics/blue-logo.png";
   const bg = variant === "dark" ? "bg-[#151E31]" : "bg-[#D3D7DF]";
   const text = variant === "dark" ? "text-[#D3D7DF]" : "text-[#05192F]";
   const border = variant === "dark" ? "border-[#D3D7DF]" : "border-[#05192F]";

@@ -23,7 +23,7 @@ export default function RoutingCardsPage() {
         </h1>
         <div className="w-full flex justify-center mb-10">
           <Image
-            src="/AI-tech-stack.png" 
+            src="/pics/AI-tech-stack.png" 
             alt="Tech Stack"
             width={1600} 
             height={500}
@@ -225,7 +225,7 @@ export default function RoutingCardsPage() {
       </h1>
       <div className="w-full flex justify-center mt-20">
         <Image
-          src="/code-standard.png"
+          src="/pics/code-standard.png"
           alt="Code standard"
           width={1400}
           height={700}

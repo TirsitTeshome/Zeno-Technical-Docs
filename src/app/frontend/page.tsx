@@ -232,7 +232,7 @@ export default function RoutingCardsPage() {
       </h1>
       <div className="w-full flex justify-center mt-20">
         <Image
-          src="/code-standard.png"
+          src="/pics/code-standard.png"
           alt="Code standard"
           width={1400}
           height={700}
@@ -391,7 +391,7 @@ export default function RoutingCardsPage() {
               <div className="flex-1 flex justify-center items-center w-full relative mt-24 lg:mt-0 lg:pr-16">
                 <div className="relative">
                   <Image
-                   src="/jestt.png" 
+                   src="/pics/jestt.png" 
                    alt="fetchAdmin.test.tsx example"
                    width={600}
                    height={100} 

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono, Teachers } from "next/font/google";
 import "./globals.css";
 import { Teachers } from "next/font/google";
 

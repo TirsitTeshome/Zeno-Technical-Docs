@@ -177,9 +177,9 @@ export default function RoutingCardsPage() {
         Entity Relationship Diagram (ERD)
       </h2>
       <p className="text-xl text-[#D3D7DF] mb-12 text-left max-w-7xl m-auto">
-        Zeno AI system’s architecture is fundamentally supported by a robust
+        Zeno AI system&apos;s architecture is fundamentally supported by a robust
         data model. The following entity-relationship tables represent the
-        relational database schema that underpins the system's core functions.
+        relational database schema that underpins the system&apos;s core functions.
         This model defines how crucial information, including user interactions,
         analytical outputs, and underlying data sources, is structured, stored,
         and interconnected. The design prioritizes data integrity, transparency,
@@ -187,7 +187,7 @@ export default function RoutingCardsPage() {
         is grounded in a verifiable and consistent data source. This relational
         schema is essential for enabling the root agent to orchestrate
         workflows, manage data flow between sub-agents, and provide a clear,
-        auditable trail for economists to validate the system's outputs.
+        auditable trail for economists to validate the system&apos;s outputs.
       </p>
       <div className="w-full flex justify-center mb-20">
         <Image

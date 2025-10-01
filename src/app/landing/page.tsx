@@ -52,50 +52,17 @@ export default function LandingPage() {
             </div>
             <div className="flex flex-col items-center justify-center py-10 px-4">
               <div className="mb-12 text-center">
-                <div className="uppercase tracking-widest text-xs font-semibold mb-2">
-                  Roasting Right
+                <div className="uppercase tracking-widest text-xs  mb-2">
+                 Where insight emerges 
                   <br />
-                  Since
+                 from paradox.
                 </div>
-                <div className="text-4xl font-bold tracking-wider mb-1">
-                  1982
+                <div className="text-4xl font-bold tracking-wider mt-10">
+                  2025
                 </div>
                 <span className="inline-block w-8 h-1 bg-[#05192F] rounded"></span>
               </div>
               <div>
-                <svg
-                  fill="none"
-                  viewBox="0 0 56 24"
-                  className="w-24 h-10 mx-auto"
-                  stroke="#05192F"
-                  strokeWidth={2}
-                >
-                  <rect
-                    x="0"
-                    y="10"
-                    width="30"
-                    height="6"
-                    rx="2"
-                    fill="#05192F"
-                  />
-                  <rect
-                    x="36"
-                    y="8"
-                    width="16"
-                    height="8"
-                    rx="4"
-                    fill="#05192F"
-                  />
-                  <circle cx="30" cy="13" r="3" fill="#05192F" />
-                  <rect
-                    x="48"
-                    y="16"
-                    width="4"
-                    height="6"
-                    rx="2"
-                    fill="#05192F"
-                  />
-                </svg>
               </div>
             </div>
           </section>

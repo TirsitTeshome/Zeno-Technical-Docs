@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex-[2] w-full">
           <div className="flex items-center gap-2">
             <Image
-              src="/zeno-logo.png"
+              src="/pics/zeno-logo.png"
               alt="Zeno Logo"
               width={182}
               height={80}

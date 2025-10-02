@@ -15,10 +15,18 @@ export default function RoutingCardsPage() {
           Overview
         </h1>
         <p className="text-base md:text-lg text-[#05192F] mb-4">
-          The AI layer of Zeno AI is the core intelligence engine that powers forecasting, scenario simulation, and evidence-based policy recommendations. It is designed as a hybrid system that combines Machine Learning (ML) techniques with Retrieval-Augmented Generation (RAG) to deliver accurate, context-aware insights to economists.
+          The AI layer of Zeno AI is the core intelligence engine that powers
+          forecasting, scenario simulation, and evidence-based policy
+          recommendations. It is designed as a hybrid system that combines
+          Machine Learning (ML) techniques with Retrieval-Augmented Generation
+          (RAG) to deliver accurate, context-aware insights to economists.
         </p>
         <p className="text-base md:text-lg text-[#05192F] mb-12">
-          The AI is built to augment human expertise rather than replace it. Economists bring domain knowledge and policy experience, while Zeno AI enhances decision-making by automating data retrieval, validating scenarios, and surfacing insights that would be difficult to uncover manually.
+          The AI is built to augment human expertise rather than replace it.
+          Economists bring domain knowledge and policy experience, while Zeno AI
+          enhances decision-making by automating data retrieval, validating
+          scenarios, and surfacing insights that would be difficult to uncover
+          manually.
         </p>
 
         <h1 className="text-3xl md:text-4xl font-bold text-[#232C3B] mb-10 mt-10">
@@ -41,7 +49,7 @@ export default function RoutingCardsPage() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
             <div className="flex-1 w-full">
               <p className="text-sm md:text-base text-[#232C3B] mb-2">
-                layout and modular design of the frontend
+                layout and modular design of the agentic AI
                 <br />
                 codebase, within the application
               </p>
@@ -55,18 +63,22 @@ export default function RoutingCardsPage() {
                 </div>
                 <div>
                   <p className="text-[#232C3B] text-sm md:text-base mb-4 max-w-prose">
-                    The frontend of this project is organized using a
-                    feature-based folder structure under <code>src/app/</code>,
-                    which promotes modularity, scalability, and maintainability.
-                    Each major feature or domain, such as analytics, dashboard,
-                    profile, and user-related flows (signin, signup,
-                    usermanagement, etc.), has its own dedicated directory.
+                    The Zeno AI repository, under zeno_agent/, uses a modular,
+                    feature-based structure for scalability. Core modules
+                    include agent.py (query routing), forecasting.py
+                    (predictions), scenario.py (what-if analysis),
+                    comparative.py (comparisons), and rag_tools.py (knowledge
+                    base). Utilities (db_utils.py, embedding_utils.py,
+                    log_utils.py) and tools (db.py, graphing.py, query.py)
+                    manage data, visualizations, and queries. Prompt templates
+                    in prompts/ guide interactions, and scenario_graphs/ stores
+                    outputs.
                   </p>
                   <p className="text-[#232C3B] text-sm md:text-base max-w-prose">
-                    This structure enhances developer productivity by making it
-                    easy to find, develop, and test features in isolation, while
-                    also supporting the growth and evolution of the codebase as
-                    new functionalities are added.
+                    Configuration files (Dockerfile, Procfile, requirements.txt)
+                    support containerized deployment, enabling isolated
+                    development and scaling for AI-driven agricultural trade
+                    analysis.
                   </p>
                 </div>
               </div>
@@ -75,50 +87,45 @@ export default function RoutingCardsPage() {
             <div className="flex-1 w-full flex justify-center">
               <div className="flex flex-col sm:flex-row gap-6">
                 <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-md shadow-xl">
-{`src/app/
-├── analytics/
-│   ├── components/
-│   ├── page.test.tsx
-│   └── page.tsx
-├── api/
-│   ├── admin/
-│   ├── auth/
-│   ├── runs/
-│   ├── signup/
-│   ├── steps/
-│   ├── user_feedback/
-│   └── users/
-├── dashboard/
-│   ├── ModuleUsage/
-│   ├── RecentSignupCard/
-│   ├── UserFeedback/
-│   ├── UserGrowth/
-│   ├── WeeklyUsageCard/
-│   ├── page.test.tsx
-│   └── page.tsx
-├── hooks/
-├── landing_page/
-├── profile/`}</pre>
+                  {`zeno-ai/
+├── .git/
+├── .github/
+│   └── pull_request_template.md
+├── .gitignore
+├── Dockerfile
+├── Procfile
+├── README.md
+└── zeno_agent/
+    ├── __init__.py
+    ├── agent.py
+    ├── comparative.py
+    ├── db_utils.py
+    ├── embedding_utils.py
+    ├── forecasting.py
+    ├── log_utils.py
+    ├── rag_tools.py
+    ├── requirements.txt
+    ├── root_agent.py
+    ├── root_agent.yaml
+    ├── scenario.py`}
+                </pre>
                 <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-md shadow-xl">
-{`│   ├── ProfileMenu/
-│   └── Sidebar/
-├── sharedComponents/
-│   ├── Background/
-│   ├── CalendarDropdown/
-│   ├── chatInput/
-│   ├── ChatInput/
-│   ├── Navigation/
-│       ├── index.test.tsx
-│       └── index.tsx
-├── signin/
-├── signup/
-├── systemHealth/
-├── teaser/
-├── user_reviews/
-├── usermanagement/
-├── utils/
-├── welcome/
-└── zeno-chat/`}</pre>
+                  {`   ├── prompts/
+    │   ├── missing_data.txt
+    │   ├── root_agent.txt
+    │   ├── router_prompt.txt
+    │   ├── scenario_examples.txt
+    │   ├── scenario_subagent.txt
+    │   ├── scenario_template.txt
+    │   └── scenario_what_if_prompt.txt
+    ├── scenario_graphs/
+    │   └── maize_kenya_scenario_drop20.png
+    └── tools/
+        ├── __init__.py
+        ├── db.py
+        ├── graphing.py
+        └── query.py`}
+                </pre>
               </div>
             </div>
           </div>
@@ -129,10 +136,10 @@ export default function RoutingCardsPage() {
         <div className="max-w-7xl w-full flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
           <div className="bg-[#D3D7DF] rounded-2xl shadow-lg p-6 md:p-8 w-full max-w-md">
             <h2 className="text-xl md:text-2xl font-bold text-[#232C3B] mb-2">
-              Zeno locally set up
+              Zeno local setup
             </h2>
             <p className="text-[#232C3B] text-sm mb-4">
-              Steps to run Zeno AI frontend locally.
+              Steps to run Zeno AI ai locally.
             </p>
             <ol className="space-y-3">
               <li className="flex items-start gap-3">
@@ -140,7 +147,7 @@ export default function RoutingCardsPage() {
                   1
                 </span>
                 <span className="text-[#232C3B] text-sm md:text-base">
-                  Navigate to frontend directory
+                  Navigate to zeno-ai directory
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -148,7 +155,7 @@ export default function RoutingCardsPage() {
                   2
                 </span>
                 <span className="text-[#232C3B] text-sm md:text-base">
-                  Install dependencies
+                  Create virtual environment
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -156,7 +163,7 @@ export default function RoutingCardsPage() {
                   3
                 </span>
                 <span className="text-[#232C3B] text-sm md:text-base">
-                  Run in development
+                  Activate virtual environment
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -164,14 +171,16 @@ export default function RoutingCardsPage() {
                   4
                 </span>
                 <span className="text-[#232C3B] text-sm md:text-base">
-                  Build for production
+                  Start server
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="bg-[#232C3B] text-white font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm flex-shrink-0 mt-0.5">
                   5
                 </span>
-                <span className="text-[#232C3B] text-sm md:text-base">npm start</span>
+                <span className="text-[#232C3B] text-sm md:text-base">
+                  npm start
+                </span>
               </li>
             </ol>
           </div>
@@ -187,11 +196,25 @@ export default function RoutingCardsPage() {
                 </span>
               </div>
               <div className="bg-[#E6E9EF] rounded-b-xl rounded-tr-xl px-4 py-4 md:px-6 md:py-6 shadow-lg font-mono text-sm md:text-base text-[#232C3B] leading-relaxed">
-                <div><span className="font-bold">ZenoStaff: $</span> cd zeno-frontend</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-frontend$</span> npm install</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-frontend$</span> npm run dev</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-frontend$</span> npm run build</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-frontend$</span> npm start</div>
+                <div>
+                  <span className="font-bold">ZenoStaff: $</span> cd zeno_agent
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span> uv
+                  venv zenoenv
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span>source
+                  zenoenv/bin/activate
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span>uv pip
+                  install -r requirements.txt
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span>adk
+                  web/
+                </div>
               </div>
             </div>
           </div>
@@ -199,19 +222,170 @@ export default function RoutingCardsPage() {
       </div>
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 md:mt-20">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#232C3B] mb-10">
-          Code Standard
-        </h1>
-        <div className="w-full flex justify-center">
-          <Image
-            src="/pics/code-standard.png"
-            alt="Code standard"
-            width={1400}
-            height={700}
-            className="w-full max-w-6xl h-auto"
-          />
-        </div>
+        <section className="w-full py-12 md:py-16 bg-[#D3D7DF]">
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#232C3B]">
+              Model Exposure
+            </h1>
+            <p className="mb-10 text-base md:text-lg text-[#232C3B] max-w-6xl">
+              The Zeno AI model is exposed via a RESTful API built with FastAPI,
+              providing a scalable and well-documented interface for querying
+              agricultural trade analysis. The API is served using Uvicorn as
+              the ASGI server, with endpoints defined in{" "}
+              <span className="font-mono">zeno_agent/agent.py</span>. It
+              supports JSON-based requests and responses, is Docker-ready for
+              deployment, and includes automatic API documentation via FastAPI’s
+              Swagger UI. The primary endpoint is{" "}
+              <span className="font-mono">/query</span> for analysis requests,
+              with a <span className="font-mono">/healthz</span> endpoint for
+              system health checks.
+            </p>
+
+            <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#232C3B]">
+              Example Requests & Responses
+            </h2>
+            <h3 className=" text-3xl font-semibold mb-2 text-[#232C3B]">
+              1. Query Endpoint
+            </h3>
+            <p className=" text-[18px] mb-2 text-[#232C3B]">
+              Purpose: Processes natural language queries for agricultural trade
+              analysis (e.g., scenario, forecasting, comparative, or knowledge
+              base queries).
+            </p>
+
+            <div className=" text-[20px] flex flex-col md:flex-row gap-8 items-start mb-2 justify-center">
+              <div className="flex-1 mb-4 md:mb-0 max-w-lg">
+                <div className="font-bold mb-1 text-[#232C3B]">Request</div>
+                <pre className=" text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs whitespace-pre-wrap font-mono">
+                  {`POST /query HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+  "query": "What if maize price drops by 20% in Kenya?"
+}`}
+                </pre>
+              </div>
+              <div className="flex-1 max-w-lg">
+                <div className="font-bold mb-1 text-[#232C3B]">Response</div>
+                <pre className="text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs whitespace-pre-wrap font-mono">
+                  {`{
+  "response": "A 20% price drop for maize in Kenya would reduce average prices from 850/kg to 680/kg over the next 6 months, impacting national supply. This could decrease farmer revenue but may potentially lift the reduced market value, trigger export flows and input inflation.",
+  "graph_path": "zeno_agent/scenario_graphs/maize_drop20.png",
+  "followup": "Would you like to analyze another scenario, such as a price increase or a different commodity?"
+}`}
+                </pre>
+              </div>
+            </div>
+            <div className="mb-6 text-sm text-[#232C3B]">
+              <div className=" text-2xl font-semibold">Notes:</div>
+              <ul className=" text-[18px] list-disc pl-5">
+                <li>The response field contains the textual analysis.</li>
+                <li>
+                  The graph_path points to a generated visualization in{" "}
+                  <span className="font-mono">zeno_agent/scenario_graphs/</span>
+                  .
+                </li>
+                <li>
+                  The followup suggests further queries to enhance user
+                  interaction.
+                </li>
+              </ul>
+            </div>
+
+            <h3 className="text-3xl font-semibold mb-2 text-[#232C3B]">
+              2. Health Check Endpoint
+            </h3>
+            <p className="text-[18px] mb-2 text-[#232C3B]">
+              Purpose: Verifies the API&apos;s operational status.
+            </p>
+            <div className="flex flex-col md:flex-row gap-8 items-start mb-2">
+              <div className="flex-1 mb-4 md:mb-0">
+                <div className=" text-xl font-bold mb-1 text-[#232C3B]">
+                  Request
+                </div>
+                <pre className="text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs overflow-x-auto font-mono">
+                  {`GET /healthz HTTP/1.1
+Host: localhost:8000`}
+                </pre>
+              </div>
+              <div className="flex-1">
+                <div className=" text-xl font-bold mb-1 text-[#232C3B]">
+                  Response
+                </div>
+                <pre className="text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs overflow-x-auto font-mono">
+                  {`{
+  "status": "ok"
+}`}
+                </pre>
+              </div>
+            </div>
+            <div className="mb-10 text-sm text-[#232C3B]">
+              <div className=" text-2xl font-semibold">Notes:</div>
+              <ul className="text-[18px] list-disc pl-5">
+                <li>Returns a simple JSON object indicating system health.</li>
+                <li>Used for monitoring and debugging in production.</li>
+              </ul>
+            </div>
+
+            <h2 className="md:text-2xl font-bold mt-10 mb-4 text-[#232C3B]">
+              Economic Models used in Zeno AI
+            </h2>
+            <ol className="mb-6 list-decimal pl-5 text-[#232C3B]">
+              <li className="mb-2">
+                <span className="font-semibold">Trade Forecasting Models</span>
+                <ul className=" text-[18px] list-disc pl-6">
+                  <li>
+                    <span className="font-semibold">ARIMA:</span> Classical
+                    time-series model for short- and medium-term forecasting
+                    using historical export/import and price data.
+                  </li>
+                  <li>
+                    <span className="font-semibold">Prophet:</span> Handles
+                    complex seasonality and trend changes in trade data for
+                    robust forecasting.
+                  </li>
+                  <li>
+                    <span className="font-semibold">XGBoost:</span> Machine
+                    learning model capturing nonlinear relationships by
+                    combining decision trees for accurate trade volume
+                    prediction under variable conditions.
+                  </li>
+                </ul>
+              </li>
+              <li className="mb-2">
+                <span className="font-semibold">
+                  Scenario Simulation Models
+                </span>
+                <ul className="list-disc pl-6">
+                  <li>
+                    <span className="font-semibold">
+                      Computable General Equilibrium (CGE) Models:
+                    </span>{" "}
+                    Economy-wide models using social accounting matrices and
+                    policy variables to simulate impacts of shocks like tariffs
+                    and drought on GDP, welfare, and sector outputs.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <span className="font-semibold">Impact Analysis Models</span>
+                <ul className="list-disc pl-6">
+                  <li>
+                    <span className="font-semibold">
+                      Structural Econometric Models:
+                    </span>{" "}
+                    Estimate elasticities and policy effects on trade volumes
+                    and assess ripple economic impacts based on scenario
+                    outputs.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </section>
       </div>
+
       <Footer />
     </main>
   );

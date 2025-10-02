@@ -61,11 +61,11 @@ export default function RoutingCardsPage() {
                 <div>
                   <p className="text-[#D3D7DF] text-sm md:text-base mb-4 max-w-prose">
                     The backend of Zeno AI is structured as a modular Django
-                    project. It is organized into multiple apps, each responsible
-                    for a specific domain of the system, such as user management,
-                    agent interactions, conversations, and API handling. This
-                    structure ensures scalability, maintainability, and clear
-                    separation of responsibilities.
+                    project. It is organized into multiple apps, each
+                    responsible for a specific domain of the system, such as
+                    user management, agent interactions, conversations, and API
+                    handling. This structure ensures scalability,
+                    maintainability, and clear separation of responsibilities.
                   </p>
                   <p className="text-[#D3D7DF] text-sm md:text-base max-w-prose">
                     This modular design allows the backend to evolve as new
@@ -79,7 +79,7 @@ export default function RoutingCardsPage() {
             <div className="flex-1 w-full flex justify-center">
               <div className="flex flex-col sm:flex-row gap-6">
                 <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-sm shadow-xl">
-{`├── agents/
+                  {`├── agents/
 │   ├── __pycache__/
 │   ├── migrations/
 │   ├── __init__.py
@@ -99,9 +99,10 @@ export default function RoutingCardsPage() {
 │   ├── serializers.py
 │   ├── tests.py
 │   ├── urls.py
-│   └── views.py`}</pre>
+│   └── views.py`}
+                </pre>
                 <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-sm shadow-xl">
-{`├── runs/
+                  {`├── runs/
 │   ├── __pycache__/
 │   ├── migrations/
 │   ├── __init__.py
@@ -120,9 +121,10 @@ export default function RoutingCardsPage() {
 │   ├── apps.py
 │   ├── models.py
 │   ├── tests.py
-│   └── views.py`}</pre>
+│   └── views.py`}
+                </pre>
                 <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-sm shadow-xl">
-{`├── conversations/
+                  {`├── conversations/
 │   ├── __pycache__/
 │   ├── migrations/
 │   ├── __init__.py
@@ -137,7 +139,8 @@ export default function RoutingCardsPage() {
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
-│   └── wsgi.py`}</pre>
+│   └── wsgi.py`}
+                </pre>
               </div>
             </div>
           </div>
@@ -149,8 +152,9 @@ export default function RoutingCardsPage() {
           Zeno AI System Architecture
         </h1>
         <p className="text-base md:text-lg text-[#D3D7DF] mb-12 max-w-3xl">
-          The system architecture of Zeno shows how the main parts of the platform
-          interact, including the frontend, backend, database, and AI components.
+          The system architecture of Zeno shows how the main parts of the
+          platform interact, including the frontend, backend, database, and AI
+          components.
         </p>
         <div className="w-full flex justify-center mb-12">
           <Image
@@ -169,17 +173,18 @@ export default function RoutingCardsPage() {
           Entity Relationship Diagram (ERD)
         </h2>
         <p className="text-base md:text-lg text-[#D3D7DF] mb-12 max-w-3xl">
-          Zeno AI system&apos;s architecture is fundamentally supported by a robust
-          data model. The following entity-relationship tables represent the
-          relational database schema that underpins the system&apos;s core functions.
-          This model defines how crucial information, including user interactions,
-          analytical outputs, and underlying data sources, is structured, stored,
-          and interconnected. The design prioritizes data integrity, transparency,
-          and traceability, ensuring that every forecast, simulation, and insight
-          is grounded in a verifiable and consistent data source. This relational
-          schema is essential for enabling the root agent to orchestrate
-          workflows, manage data flow between sub-agents, and provide a clear,
-          auditable trail for economists to validate the system&apos;s outputs.
+          Zeno AI system&apos;s architecture is fundamentally supported by a
+          robust data model. The following entity-relationship tables represent
+          the relational database schema that underpins the system&apos;s core
+          functions. This model defines how crucial information, including user
+          interactions, analytical outputs, and underlying data sources, is
+          structured, stored, and interconnected. The design prioritizes data
+          integrity, transparency, and traceability, ensuring that every
+          forecast, simulation, and insight is grounded in a verifiable and
+          consistent data source. This relational schema is essential for
+          enabling the root agent to orchestrate workflows, manage data flow
+          between sub-agents, and provide a clear, auditable trail for
+          economists to validate the system&apos;s outputs.
         </p>
         <div className="w-full flex justify-center mb-12">
           <Image
@@ -227,7 +232,9 @@ export default function RoutingCardsPage() {
                 <span className="bg-[#D3D7DF] text-[#151E31] font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm flex-shrink-0 mt-0.5">
                   4
                 </span>
-                <span className="text-[#D3D7DF] text-sm md:text-base">Run migrations</span>
+                <span className="text-[#D3D7DF] text-sm md:text-base">
+                  Run migrations
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="bg-[#D3D7DF] text-[#151E31] font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm flex-shrink-0 mt-0.5">
@@ -246,12 +253,29 @@ export default function RoutingCardsPage() {
             </h2>
             <div className="relative">
               <div className="bg-[#E6E9EF] rounded-b-xl rounded-tr-xl px-4 py-4 md:px-6 md:py-6 shadow-lg font-mono text-sm md:text-base text-[#151E31] leading-relaxed">
-                <div><span className="font-bold">ZenoStaff: $</span> cd backend</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-backend$</span> python -m venv venv</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-backend$</span> source venv/bin/activate</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-backend$</span> pip install -r requirements.txt</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-backend$</span> python manage.py migrate</div>
-                <div><span className="font-bold">ZenoStaff: /zeno-backend$</span> python manage.py runserver</div>
+                <div>
+                  <span className="font-bold">ZenoStaff: $</span> cd backend
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-backend$</span>{" "}
+                  python -m venv venv
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-backend$</span>{" "}
+                  source venv/bin/activate
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-backend$</span>{" "}
+                  pip install -r requirements.txt
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-backend$</span>{" "}
+                  python manage.py migrate
+                </div>
+                <div>
+                  <span className="font-bold">ZenoStaff: /zeno-backend$</span>{" "}
+                  python manage.py runserver
+                </div>
               </div>
             </div>
           </div>
@@ -266,7 +290,9 @@ export default function RoutingCardsPage() {
                 Route
               </h1>
               <p className="text-base md:text-lg mb-6 text-[#D3D7DF] max-w-xl font-normal leading-relaxed font-montserrat border-b-2 border-[#D3D7DF] pb-4">
-                The backend exposes a set of RESTful endpoints to manage multiple sub-agents within Zeno AI. These routes allow creating, retrieving, updating and deleting records.
+                The backend exposes a set of RESTful endpoints to manage
+                multiple sub-agents within Zeno AI. These routes allow creating,
+                retrieving, updating and deleting records.
               </p>
               <p className="text-base md:text-lg text-[#D3D7DF] max-w-xl font-normal leading-relaxed font-montserrat">
                 Click on the image to see the full swagger documentation.
@@ -296,7 +322,7 @@ export default function RoutingCardsPage() {
         </div>
       </div>
 
-      <section className="w-full py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[#151E31]">
+      <section className="w-full py-12 md:py-8 px-4 md:px-6 lg:px-8 bg-[#151E31]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-10">
             <div className="flex-1">
@@ -313,8 +339,8 @@ export default function RoutingCardsPage() {
                     Purpose
                   </span>
                   <p className="text-base md:text-lg text-[#D6DCE7] mt-1">
-                    Validate business logic, database models, and API endpoints to
-                    ensure data integrity and correct functionality.
+                    Validate business logic, database models, and API endpoints
+                    to ensure data integrity and correct functionality.
                   </p>
                 </div>
                 <div>
@@ -323,7 +349,10 @@ export default function RoutingCardsPage() {
                   </span>
                   <ul className="text-base md:text-lg text-[#D6DCE7] mt-2 space-y-1">
                     <li>Unit tests for models, serializers, and utilities</li>
-                    <li>Integration tests for API endpoints and authentication flows</li>
+                    <li>
+                      Integration tests for API endpoints and authentication
+                      flows
+                    </li>
                     <li>Database migrations and schema validation</li>
                     <li>Error handling and permission enforcement</li>
                   </ul>
@@ -331,8 +360,8 @@ export default function RoutingCardsPage() {
               </div>
               <p className="text-base md:text-lg text-[#D6DCE7]">
                 Through Pytest, we guarantee that the backend logic produces
-                accurate outputs, maintains secure operations, and scales without
-                regressions.
+                accurate outputs, maintains secure operations, and scales
+                without regressions.
               </p>
             </div>
             <div className="flex-1 flex justify-center items-start">
@@ -347,6 +376,95 @@ export default function RoutingCardsPage() {
           </div>
         </div>
       </section>
+<section className="w-full py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[#151E31]">
+  <div className="max-w-7xl mx-auto">
+    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-12">
+      <div className="max-w-3xl flex-1">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#D6DCE7] leading-tight mb-6">
+          Automated API Tests Using <br /> Postman CLI
+        </h1>
+        <p className="text-base md:text-lg text-[#D6DCE7] mb-8 md:mb-10">
+          The backend API testing pipeline used Postman CLI integrated with GitHub Actions, providing automated coverage upon every code update.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-8 md:gap-10">
+          {[
+            {
+              bg: "bg-orange-500",
+              img: "/pics/post.png",
+              alt: "Postman Icon",
+              title: "Step 1",
+              desc: "Exported Postman Collection and Environment IDs",
+            },
+            {
+              bg: "bg-white",
+              img: "/pics/actions.png",
+              alt: "GitHub Actions Icon",
+              title: "Step 2",
+              desc: "Stored UIDs and Postman API Key in GitHub Secrets",
+            },
+            {
+              bg: "bg-[#121F3D]",
+              img: "/pics/junit.png",
+              alt: "JUnit Icon",
+              title: "Step 3",
+              desc: "Configured GitHub Actions Workflow",
+            },
+          ].map((step, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center sm:items-start gap-3 text-center sm:text-left"
+            >
+              <div className={`${step.bg} w-16 h-16 rounded-full p-4 flex items-center justify-center`}>
+                <Image
+                  src={step.img}
+                  alt={step.alt}
+                  width={step.alt.includes("JUnit") ? 64 : 40}
+                  height={step.alt.includes("JUnit") ? 24 : 40}
+                  className="object-contain"
+                />
+              </div>
+              <h3 className="text-base md:text-xl text-[#D6DCE7] font-semibold">{step.title}</h3>
+              <p className="text-base md:text-lg text-[#D6DCE7] max-w-xs">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+<div className="relative w-full max-w-xl mx-auto">
+  <div className="relative w-full h-[320px] sm:h-[360px] md:h-[420px] overflow-hidden rounded-xl">
+    <Image
+      src="/pics/api-test-light.png"
+      alt="API Test Light"
+      fill
+      className="object-contain opacity-70"
+      priority
+    />
+  </div>
+
+  <div
+    className={`
+      absolute rounded-xl 
+      w-[90%] h-[90%]
+      sm:w-[92%] sm:h-[92%]
+      md:w-[94%] md:h-[94%]
+      xl:w-[124%] xl:h-[94%]
+      top-4 sm:top-5 md:top-10
+      left-1/2 -translate-x-1/2
+      md:left-6 md:translate-x-0
+    `}
+  >
+    <Image
+      src="/pics/api-test-dark.png"
+      alt="API Test Dark"
+      fill
+      className="object-contain"
+      priority
+    />
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
       <Footer />
     </main>
   );

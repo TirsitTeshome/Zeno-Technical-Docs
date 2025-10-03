@@ -3,7 +3,55 @@ import NavBar from "../shared-components/NavBar";
 import React from "react";
 import Footer from "../shared-components/footer";
 
-export default function RoutingCardsPage() {
+const leftSteps = [
+  {
+    number: "01",
+    title: "Prepared our Project Locally",
+    desc: "Verified the package.json contains the correct build script, e.g., build: react-scripts build for React.",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "02",
+    title: "Connected our Repository to Vercel",
+    desc: "Sign in to Vercel -> choose New Project. -> Get a token -> Import your Git repository by selecting the correct repository.",
+    color: "bg-[#36496E]",
+  },
+  {
+    number: "03",
+    title: "Configure Build Settings on Vercel",
+    desc: "Ensure the Build Command is set to npm run build or your custom script.-> Set the Output Directory (build for React, .next for Next.js).-> Specify the Node.js version by adding an engines field in package.json or environment variable to avoid build inconsistencies.",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "04",
+    title: "Added Environment Variables",
+    desc: "Add all required variables (e.g., API URLs prefixed with BASE_URL) in Vercel’s project settings under Environment Variables.",
+    color: "bg-[#36496E]",
+  },
+  {
+    number: "05",
+    title: "Deployed our Application",
+    desc: "Deploy happens automatically on push to the main branch npx vercel --prod --confirm --token $VERCEL_TOKEN",
+    color: "bg-[#5B80AC]",
+  },
+];
+
+const rightSteps = [
+  {
+    number: "06",
+    title: "Monitor Build Logs and Deployment",
+    desc: "Watch the Vercel dashboard for build logs and error messages. If you use GitHub Actions, automatic deployments can be triggered on pushes with logs visible in the Actions tab.",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "07",
+    title: "Final Testing and Validation",
+    desc: "After deployment, visit the live URL provided by Vercel. Verify all assets load correctly, check for broken image links or missing icons. Use preview deployments from pull requests to test changes before merge.",
+    color: "bg-[#36496E]",
+  },
+];
+
+export default function Frontend() {
   return (
     <div className="min-h-screen bg-[#D3D7DF] pt-32">
       <NavBar />
@@ -381,6 +429,100 @@ export default function RoutingCardsPage() {
                   height={100}
                   className="w-full max-w-md h-auto"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* --- Frontend Deployment Section --- */}
+    
+      <div className="w-full max-w-8xl flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-5 px-2 md:px-6 lg:px-8 bg-[#D3D7DF]">
+        <div className="flex-1">
+          <div className="relative bg-[#D3D7DF] py-8 md:py-10 lg:py-16 flex justify-center">
+            <div className="flex flex-col sm:flex-row max-w-5xl w-full">
+              <div className="relative flex flex-col items-center w-full sm:w-2/5 min-w-[180px] sm:min-w-[230px] max-w-[300px] mx-auto sm:mx-0">
+                <svg
+                  width="100%"
+                  height="180"
+                  viewBox="0 0 180 180"
+                  className="absolute left-0 sm:left-2 top-10 z-10 w-[180px] sm:w-[220px] lg:w-[250px]"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <path
+                    d="M150 90a60 60 0 1 0-120 0"
+                    stroke="#36496E"
+                    strokeWidth="14"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="relative mt-[120px] sm:mt-[150px] md:mt-[170px] text-center sm:text-left">
+                  <div className="font-bold text-lg sm:text-xl text-[#232C3B]">
+                    FRONTEND <span className="font-normal [#232323]">DEPLOYMENT</span>
+                  </div>
+                  <div className="text-lg text-gray-500 max-w-[240px] mt-2 leading-snug mx-auto sm:mx-0">
+                    The front-end application was deployed using Vercel. The project was first prepared and built locally, and the GitHub repository was then connected to Vercel. After changes were pushed, the application was automatically built and deployed by Vercel.
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col flex-1 pl-0 sm:pl-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
+                {leftSteps.map((step, idx) => (
+                  <div key={idx} className="flex flex-row items-center">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#495a6e] font-bold text-xl sm:text-2xl border-4 border-white shadow-md"
+                        style={{ marginRight: "-20px", zIndex: 10 }}
+                      >
+                        {step.number}
+                      </div>
+                    </div>
+                    <div
+                      className={`flex-1 ml-4 sm:ml-8 rounded-[35px] ${step.color} shadow-lg px-4 sm:px-6 md:px-8 py-4 flex items-center gap-4 min-h-[88px]`}
+                      style={{
+                        maxWidth: 500,
+                        border: "2px solid #cccccc"
+                      }}
+                    >
+                      <div>
+                        <div className="font-bold text-white text-sm sm:text-base mb-1">{step.title}</div>
+                        <div className="text-white text-xs opacity-80 leading-snug">{step.desc}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="relative bg-[#D3D7DF] py-8 md:py-10 lg:py-16 flex justify-center">
+            <div className="flex flex-col sm:flex-row-reverse max-w-5xl w-full">
+              <div className="flex flex-col flex-1 pr-0 sm:pr-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
+                {rightSteps.map((step, idx) => (
+                  <div key={idx} className="flex flex-row-reverse items-center">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#495a6e] font-bold text-xl sm:text-2xl border-4 border-white shadow-md"
+                        style={{ marginLeft: "-20px", zIndex: 10 }}
+                      >
+                        {step.number}
+                      </div>
+                    </div>
+                    <div
+                      className={`flex-1 mr-4 sm:mr-8 rounded-[35px] ${step.color} shadow-lg px-4 sm:px-6 md:px-8 py-4 flex flex-row-reverse items-center gap-4 min-h-[88px]`}
+                      style={{
+                        maxWidth: 500,
+                        border: "2px solid #cccccc"
+                      }}
+                    >
+                      <div className="text-right w-full">
+                        <div className="font-bold text-white text-sm sm:text-base mb-1">{step.title}</div>
+                        <div className="text-white text-xs opacity-80 leading-snug">{step.desc}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

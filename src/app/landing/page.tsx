@@ -4,7 +4,7 @@ import Footer from "../shared-components/footer";
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#D3D7DF]">
       <DocsNavBar variant="light" />
       <main className="flex-grow bg-[#D3D7DF] text-[#05192F] font-teachers py-40 px-4 md:py-45 md:px-0">
         <div className="w-full max-w-7xl mx-auto px-4 md:px-10 lg:px-10 xl:px-0">
@@ -64,6 +64,26 @@ export default function LandingPage() {
           </section>
         </div>
       </main>
+       <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 md:mt-20 bg-[#D3D7DF] ">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#05192F] mb-6">
+          Zeno AI System Architecture
+        </h1>
+        <p className="text-base md:text-lg text-[#05192F] mb-12 max-w-3xl">
+          The system architecture of Zeno shows how the main parts of the
+          platform interact, including the frontend, backend, database, and AI
+          components.
+        </p>
+        <div className="w-full flex justify-center mb-12">
+          <Image
+            src="/pics/sys-arch.png"
+            alt="Zeno AI System Architecture Diagram"
+            width={1400}
+            height={700}
+            className="w-full max-w-6xl h-auto rounded-lg shadow-xl"
+            priority
+          />
+        </div>
+      </div>
       <Footer />
     </div>
   );

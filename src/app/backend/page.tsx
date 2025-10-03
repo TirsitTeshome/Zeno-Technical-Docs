@@ -3,6 +3,72 @@ import DocsNavBar from "../shared-components/NavBar";
 import React from "react";
 import Footer from "../shared-components/footer";
 
+const leftSteps = [
+  {
+    number: "01",
+    title: "We prepared the project for Heroku",
+    desc: "We prepared the project for Heroku We made sure requirements.txt included essential packages like gunicorn for the server and psycopg2-binary for PostgreSQL. We created a Procfile at the project root with: web: gunicorn zeno.wsgi --log-file-",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "02",
+    title: "Connected our Repository to Vercel",
+    desc: "We added runtime.txt specifying the Python version: python-3.11",
+    color: "bg-[#36496E]",
+  },
+  {
+    number: "03",
+    title: "Configure Build Settings on Vercel",
+    desc: "EIn zeno/settings.py, we set DEBUG = False for production, configured ALLOWED_HOSTS to include our Heroku domain, and moved sensitive settings like SECRET_KEY into environment variables accessed via os.getenv().",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "04",
+    title: "Added Environment Variables",
+    desc: "We installed the Heroku CLI and authenticated Running heroku login allowed us to connect our local environment with Heroku securely.",
+    color: "bg-[#36496E]",
+  },
+  {
+    number: "05",
+    title: "Deployed our Application",
+    desc: "We created the Heroku application. From the backend root directory, we ran: heroku create zeno-backend-api",
+    color: "bg-[#5B80AC]",
+  },
+];
+
+const rightSteps = [
+  {
+    number: "06",
+    title: "Monitor Build Logs and Deployment",
+    desc: "Watch the Vercel dashboard for build logs and error messages. If you use GitHub Actions, automatic deployments can be triggered on pushes with logs visible in the Actions tab.",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "07",
+    title: "Final Testing and Validation",
+    desc: "We set environment variables on Heroku. We securely added critical environment variables via CLI. Heroku config:set SECRET_KEY='the_secret_key' DATABASE_URL='the_database_url' DJANGO_SETTINGS_MODULE='zeno.settings' -a zeno-backend-api",
+    color: "bg-[#36496E]",
+  },
+    {
+    number: "08",
+    title: "Monitor Build Logs and Deployment",
+    desc: "We deployed the backend code. We pushed our main branch to Heroku: git push heroku main",
+    color: "bg-[#5B80AC]",
+  },
+  {
+    number: "09",
+    title: "Final Testing and Validation",
+    desc: "This triggered a build, installed dependencies, and launched the application.",
+    color: "bg-[#36496E]",
+  },
+    {
+    number: "10",
+    title: "Final Testing and Validation",
+    desc: "We tested all API endpoints using Postman. This helped us confirm that every endpoint functioned as intended and caught unexpected issues early.",
+    color: "bg-[#36496E]",
+  }
+];
+
 export default function RoutingCardsPage() {
   return (
     <main className="min-h-screen bg-[#151E31] pt-32">
@@ -146,27 +212,6 @@ export default function RoutingCardsPage() {
           </div>
         </div>
       </section>
-
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 md:mt-20">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#D3D7DF] mb-6">
-          Zeno AI System Architecture
-        </h1>
-        <p className="text-base md:text-lg text-[#D3D7DF] mb-12 max-w-3xl">
-          The system architecture of Zeno shows how the main parts of the
-          platform interact, including the frontend, backend, database, and AI
-          components.
-        </p>
-        <div className="w-full flex justify-center mb-12">
-          <Image
-            src="/pics/sys-arch.png"
-            alt="Zeno AI System Architecture Diagram"
-            width={1400}
-            height={700}
-            className="w-full max-w-6xl h-auto rounded-lg shadow-xl"
-            priority
-          />
-        </div>
-      </div>
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 md:mt-20">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#D3D7DF]">
@@ -376,72 +421,80 @@ export default function RoutingCardsPage() {
           </div>
         </div>
       </section>
-<section className="w-full py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[#151E31]">
-  <div className="max-w-7xl mx-auto">
-    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-12">
-      <div className="max-w-3xl flex-1">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#D6DCE7] leading-tight mb-6">
-          Automated API Tests Using <br /> Postman CLI
-        </h1>
-        <p className="text-base md:text-lg text-[#D6DCE7] mb-8 md:mb-10">
-          The backend API testing pipeline used Postman CLI integrated with GitHub Actions, providing automated coverage upon every code update.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-8 md:gap-10">
-          {[
-            {
-              bg: "bg-orange-500",
-              img: "/pics/post.png",
-              alt: "Postman Icon",
-              title: "Step 1",
-              desc: "Exported Postman Collection and Environment IDs",
-            },
-            {
-              bg: "bg-white",
-              img: "/pics/actions.png",
-              alt: "GitHub Actions Icon",
-              title: "Step 2",
-              desc: "Stored UIDs and Postman API Key in GitHub Secrets",
-            },
-            {
-              bg: "bg-[#121F3D]",
-              img: "/pics/junit.png",
-              alt: "JUnit Icon",
-              title: "Step 3",
-              desc: "Configured GitHub Actions Workflow",
-            },
-          ].map((step, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center sm:items-start gap-3 text-center sm:text-left"
-            >
-              <div className={`${step.bg} w-16 h-16 rounded-full p-4 flex items-center justify-center`}>
+      <section className="w-full py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[#151E31]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-12">
+            <div className="max-w-3xl flex-1">
+              <h1 className="text-3xl md:text-4xl font-bold text-[#D6DCE7] leading-tight mb-6">
+                Automated API Tests Using <br /> Postman CLI
+              </h1>
+              <p className="text-base md:text-lg text-[#D6DCE7] mb-8 md:mb-10">
+                The backend API testing pipeline used Postman CLI integrated
+                with GitHub Actions, providing automated coverage upon every
+                code update.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-8 md:gap-10">
+                {[
+                  {
+                    bg: "bg-orange-500",
+                    img: "/pics/post.png",
+                    alt: "Postman Icon",
+                    title: "Step 1",
+                    desc: "Exported Postman Collection and Environment IDs",
+                  },
+                  {
+                    bg: "bg-white",
+                    img: "/pics/actions.png",
+                    alt: "GitHub Actions Icon",
+                    title: "Step 2",
+                    desc: "Stored UIDs and Postman API Key in GitHub Secrets",
+                  },
+                  {
+                    bg: "bg-[#121F3D]",
+                    img: "/pics/junit.png",
+                    alt: "JUnit Icon",
+                    title: "Step 3",
+                    desc: "Configured GitHub Actions Workflow",
+                  },
+                ].map((step, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center sm:items-start gap-3 text-center sm:text-left"
+                  >
+                    <div
+                      className={`${step.bg} w-16 h-16 rounded-full p-4 flex items-center justify-center`}
+                    >
+                      <Image
+                        src={step.img}
+                        alt={step.alt}
+                        width={step.alt.includes("JUnit") ? 64 : 40}
+                        height={step.alt.includes("JUnit") ? 24 : 40}
+                        className="object-contain"
+                      />
+                    </div>
+                    <h3 className="text-base md:text-xl text-[#D6DCE7] font-semibold">
+                      {step.title}
+                    </h3>
+                    <p className="text-base md:text-lg text-[#D6DCE7] max-w-xs">
+                      {step.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="relative w-full max-w-xl mx-auto">
+              <div className="relative w-full h-[320px] sm:h-[360px] md:h-[420px] overflow-hidden rounded-xl">
                 <Image
-                  src={step.img}
-                  alt={step.alt}
-                  width={step.alt.includes("JUnit") ? 64 : 40}
-                  height={step.alt.includes("JUnit") ? 24 : 40}
-                  className="object-contain"
+                  src="/pics/api-test-light.png"
+                  alt="API Test Light"
+                  fill
+                  className="object-contain opacity-70"
+                  priority
                 />
               </div>
-              <h3 className="text-base md:text-xl text-[#D6DCE7] font-semibold">{step.title}</h3>
-              <p className="text-base md:text-lg text-[#D6DCE7] max-w-xs">{step.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-<div className="relative w-full max-w-xl mx-auto">
-  <div className="relative w-full h-[320px] sm:h-[360px] md:h-[420px] overflow-hidden rounded-xl">
-    <Image
-      src="/pics/api-test-light.png"
-      alt="API Test Light"
-      fill
-      className="object-contain opacity-70"
-      priority
-    />
-  </div>
 
-  <div
-    className={`
+              <div
+                className={`
       absolute rounded-xl 
       w-[90%] h-[90%]
       sm:w-[92%] sm:h-[92%]
@@ -451,19 +504,111 @@ export default function RoutingCardsPage() {
       left-1/2 -translate-x-1/2
       md:left-6 md:translate-x-0
     `}
-  >
-    <Image
-      src="/pics/api-test-dark.png"
-      alt="API Test Dark"
-      fill
-      className="object-contain"
-      priority
-    />
-  </div>
-</div>
-    </div>
-  </div>
-</section>
+              >
+                <Image
+                  src="/pics/api-test-dark.png"
+                  alt="API Test Dark"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full max-w-6.5xl flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-5 px-2 md:px-6 lg:px-8 bg-[#151E31]">
+        <div className="flex-1 ">
+          <div className="relative bg-[#151E31] py-8 md:py-10 lg:py-16 flex justify-center">
+            <div className="flex flex-col sm:flex-row max-w-5xl w-full">
+              <div className="relative flex flex-col items-center w-full sm:w-2/5 min-w-[180px] sm:min-w-[230px] max-w-[300px] mx-auto sm:mx-0">
+                <svg
+                  width="100%"
+                  height="180"
+                  viewBox="0 0 180 180"
+                  className="absolute left-0 sm:left-2 top-10 z-10 w-[180px] sm:w-[220px] lg:w-[250px]"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <path
+                    d="M150 90a60 60 0 1 0-120 0"
+                    stroke="#a9b9d3"
+                    strokeWidth="14"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="relative mt-[120px] sm:mt-[150px] md:mt-[170px] text-center sm:text-left">
+                  <div className="font-bold text-lg sm:text-xl text-[#fdfdfd]">
+                    BACKEND <span className="font-normal text-[#bfbff0]">DEPLOYMENT</span>
+                  </div>
+                  <div className="text-lg text-[#a9b9d3] max-w-[240px] mt-2 leading-snug mx-auto sm:mx-0">
+                    The front-end application was deployed using Vercel. The project was first prepared and built locally, and the GitHub repository was then connected to Vercel. After changes were pushed, the application was automatically built and deployed by Vercel.
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col flex-1 pl-0 sm:pl-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
+                {leftSteps.map((step, idx) => (
+                  <div key={idx} className="flex flex-row items-center">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#becad6] font-bold text-xl sm:text-2xl border-1 border-white shadow-md"
+                        style={{ marginRight: "-20px", zIndex: 10 }}
+                      >
+                        {step.number}
+                      </div>
+                    </div>
+                    <div
+                      className={`flex-1 ml-4 sm:ml-8 rounded-[35px] ${step.color} shadow-lg px-4 sm:px-6 md:px-8 py-4 flex items-center gap-4 min-h-[88px]`}
+                      style={{
+                        maxWidth: 500,
+                        border: "2px solid #cccccc"
+                      }}
+                    >
+                      <div>
+                        <div className="font-bold text-white text-sm sm:text-base mb-1">{step.title}</div>
+                        <div className="text-white text-xs opacity-80 leading-snug">{step.desc}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="relative [#bg-[#151E31] ] py-8 md:py-10 lg:py-16 flex justify-center">
+            <div className="flex flex-col sm:flex-row-reverse max-w-5xl w-full">
+              <div className="flex flex-col flex-1 pr-0 sm:pr-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
+                {rightSteps.map((step, idx) => (
+                  <div key={idx} className="flex flex-row-reverse items-center">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#becad6]  font-bold text-xl sm:text-2xl border-1 border-white shadow-md"
+                        style={{ marginLeft: "-20px", zIndex: 10 }}
+                      >
+                        {step.number}
+                      </div>
+                    </div>
+                    <div
+                      className={`flex-1 mr-4 sm:mr-8 rounded-[35px] ${step.color} shadow-lg px-4 sm:px-6 md:px-8 py-4 flex flex-row-reverse items-center gap-4 min-h-[88px]`}
+                      style={{
+                        maxWidth: 500,
+                        border: "2px solid #cccccc"
+                      }}
+                    >
+                      <div className="text-right w-full">
+                        <div className="font-bold text-white text-sm sm:text-base mb-1">{step.title}</div>
+                        <div className="text-white text-xs opacity-80 leading-snug">{step.desc}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </main>

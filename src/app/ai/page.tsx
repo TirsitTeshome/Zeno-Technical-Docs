@@ -1,9 +1,282 @@
+"use client";
+
 import Image from "next/image";
 import DocsNavBar from "../shared-components/NavBar";
 import React from "react";
 import Footer from "../shared-components/footer";
+import clsx from "clsx";
+import { useState } from "react";
+import {
+  FaStore,
+  FaFileAlt,
+  FaDollarSign,
+  FaCogs,
+  FaBullhorn,
+  FaRocket,
+} from "react-icons/fa";
+import {
+  FaDatabase,
+  FaProjectDiagram,
+} from "react-icons/fa";
+import {
+  FaCloudDownloadAlt,
+  FaCheckCircle,
+  FaRegFilePdf,
+  FaPython,
+  FaChartLine,
+  FaRobot,
+  FaCode,
+} from "react-icons/fa";
+import {
+  SiPandas,
+  SiNumpy,
+  SiLangchain,
+  SiGooglecloud,
+  SiPostgresql,
+  SiScikitlearn,
+  SiSqlalchemy,
+} from "react-icons/si";
+const pipelineSteps = [
+  {
+    icon: <FaCloudDownloadAlt />,
+    title: "Data Collection",
+    step: 1,
+    description: (
+      <>
+        Aggregates and centralizes economic and trade datasets (PDF, JSON, CSV) into a unified repository.<br />
+        Automated scanning, downloading, and ingestion from cloud and web sources, with systematic file naming and organization, enabling reproducibility and downstream processing.
+      </>
+    ),
+    details: (
+      <div className="text-xs md:text-sm mt-2 mb-2 text-left">
+        <span className="font-bold text-[#05192F]">Data Sources:</span>
+        <ul className="list-disc ml-5">
+          <li>Statista (global economics/trade)</li>
+          <li>KNBS (official Kenya data)</li>
+          <li>Trading Economics (real-time indicators, prices, tariffs, policies)</li>
+          <li>Curated news/economic reports</li>
+        </ul>
+      </div>
+    ),
+    frameworks: [
+      { name: "os", icon: <FaPython /> },
+      { name: "glob", icon: <FaPython /> },
+      { name: "pandas", icon: <SiPandas /> },
+      { name: "PDFPlumber", icon: <FaRegFilePdf /> },
+      { name: "tika", icon: <FaCode /> },
+      { name: "BeautifulSoup4", icon: <FaCode /> },
+    ],
+  },
+  {
+    icon: <FaCheckCircle />,
+    title: "Data Cleaning & Preprocessing",
+    step: 2,
+    description: (
+      <>
+        Converts raw data into a clean, normalized, analysis-ready format.<br />
+        Includes missing value audits, outlier detection (IQR), type coercion, duplicate removal, domain filtering, scaling, and persistent storage as CSV/JSON.
+      </>
+    ),
+    frameworks: [
+      { name: "pandas", icon: <SiPandas /> },
+      { name: "numpy", icon: <SiNumpy /> },
+    ],
+  },
+  {
+    icon: <FaRegFilePdf />,
+    title: "Text Extraction & Chunking",
+    step: 3,
+    description: (
+      <>
+        Extracts structured/unstructured text from documents and prepares chunks for embedding.<br />
+        Utilizes PDFPlumber/Tika for extraction, appends metadata, and applies adaptive chunking (LangChain) for semantic search.
+      </>
+    ),
+    frameworks: [
+      { name: "PDFPlumber", icon: <FaRegFilePdf /> },
+      { name: "tika", icon: <FaCode /> },
+      { name: "LangChain", icon: <SiLangchain /> },
+    ],
+  },
+  {
+    icon: <FaProjectDiagram />,
+    title: "Embedding Generation",
+    step: 4,
+    description: (
+      <>
+        Converts text chunks into semantic vectors for search and ML.<br />
+        Uses Google Generative AI’s embedding model (via langchain-google-genai), with batch processing and error handling for reliability.
+      </>
+    ),
+    frameworks: [
+      { name: "Google Generative AI", icon: <SiGooglecloud /> },
+      { name: "langchain-google-genai", icon: <SiLangchain /> },
+      { name: "Python logging", icon: <FaPython /> },
+    ],
+  },
+  {
+    icon: <FaDatabase />,
+    title: "Vector Database Storage",
+    step: 5,
+    description: (
+      <>
+        Stores embeddings and metadata in PostgreSQL with pgvector for fast semantic search.<br />
+        Uses SQLAlchemy ORM and psycopg2 for robust database integration.
+      </>
+    ),
+    frameworks: [
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "pgvector", icon: <FaDatabase /> },
+      { name: "SQLAlchemy", icon: <SiSqlalchemy /> },
+      { name: "psycopg2", icon: <FaPython /> },
+    ],
+  },
+  {
+    icon: <FaCogs />,
+    title: "Orchestration & Analysis",
+    step: 6,
+    description: (
+      <>
+        Agent orchestration for advanced analytics (forecasting, simulation, scenario analysis) exposed via API.<br />
+        Uses Google AI Dev Kit, Gemini 2.5 Flash, and integrates time-series/ML models (Prophet, ARIMA, XGBoost).
+      </>
+    ),
+    frameworks: [
+      { name: "Google AI Dev Kit", icon: <SiGooglecloud /> },
+      { name: "Gemini 2.5 Flash", icon: <FaRobot /> },
+      { name: "Prophet", icon: <FaChartLine /> },
+      { name: "ARIMA", icon: <FaChartLine /> },
+      { name: "XGBoost", icon: <SiScikitlearn /> },
+    ],
+  },
+];
+const steping = [
+  {
+    icon: <FaStore size={28} className="text-white" />,
+    title: "Market Research and Analysis",
+    subtitle: "STEP 1",
+    description:
+      "Conduct comprehensive market research to understand industry trends, target audience, and competitive landscape.",
+  },
+  {
+    icon: <FaFileAlt size={28} className="text-white" />,
+    title: "Business Plan Development",
+    subtitle: "STEP 2",
+    description:
+      "Develop a detailed business plan outlining the business model, value proposition, revenue streams, and financial projections.",
+  },
+  {
+    icon: <FaDollarSign size={28} className="text-white" />,
+    title: "Securing Funding",
+    subtitle: "STEP 3",
+    description:
+      "Identify potential investors and secure initial funding through venture capital, angel investors, or crowdfunding.",
+  },
+  {
+    icon: <FaCogs size={28} className="text-white" />,
+    title: "Product Development",
+    subtitle: "STEP 4",
+    description:
+      "Design and develop the core product or service, ensuring it meets market needs and quality standards.",
+  },
+  {
+    icon: <FaBullhorn size={28} className="text-white" />,
+    title: "Marketing and Branding",
+    subtitle: "STEP 5",
+    description:
+      "Create a strong brand identity and launch a marketing campaign to build awareness and attract early adopters.",
+  },
+  {
+    icon: <FaRocket size={28} className="text-white" />,
+    title: "Launch, Evaluation, and Scaling",
+    subtitle: "STEP 6",
+    description:
+      "Officially launch the product or service, focus on customer acquisition, evaluate business performance, gather feedback, and scale operations.",
+  },
+];
+
+const steps = [
+  {
+    title: "Create Dockerfile",
+    code: `FROM python:3.11-slim
+
+
+WORKDIR /app
+ENV PYTHONPATH=/app
+
+
+# Install dependencies
+RUN pip install --no-cache-dir -r zeno_agent/requirements.txt
+RUN pip install fastapi uvicorn
+
+
+EXPOSE 8080
+
+
+CMD ["uvicorn", "zeno_agent.agent:app", "--host", "0.0.0.0", "--port", "8080"]`,
+    desc: "Use the lightweight Python 3.11 slim image to optimize container size and performance.",
+  },
+  {
+    title: "Create .dockerignore",
+    code: `__pycache__/
+.env
+venv/
+*.log
+*.pyc`,
+    desc: "Exclude unnecessary files to keep the image lean and secure.",
+  },
+  {
+    title: "Set Environment Variables",
+    code: `env:
+ GOOGLE_GENAI_USE_VERTEXAI: \${{ secrets.GOOGLE_GENAI_USE_VERTEXAI }}
+ GOOGLE_API_KEY: \${{ secrets.GOOGLE_API_KEY }}
+ DATABASE_URL: \${{ secrets.DATABASE_URL }}
+ PROJECT_ID: \${{ secrets.GCP_PROJECT_ID }}
+ SERVICE_NAME: zeno-agent
+ REGION: europe-west1
+ IMAGE: \${{ secrets.DOCKERHUB_USERNAME }}/zeno-economist`,
+    desc: "Manage sensitive credentials and deployment-specific configs securely using CI/CD secrets.",
+  },
+  {
+    title: "Build Docker Image",
+    code: `docker build -t zeno-ai:latest .`,
+    desc: "Build locally or in CI/CD pipelines.",
+  },
+  {
+    title: "Run Locally for Testing",
+    code: `docker run -p 8080:8080 zeno-ai:latest`,
+    desc: (
+      <>
+        Map container port to local machine and verify API responsiveness.
+        <br />
+        <span className="block mt-1">
+          Access the API at{" "}
+          <span className="underline text-[#263C61]">
+            http://localhost:8080
+          </span>
+          .
+        </span>
+      </>
+    ),
+  },
+  {
+    title: "Push Docker Image to Registry",
+    code: `docker push \${{ secrets.DOCKERHUB_USERNAME }}/zeno-economist`,
+    desc: "Push to your Docker Hub or GCR repository for remote deployment.",
+  },
+  {
+    title: "Deploy to Google Cloud Run",
+    code: `gcloud run deploy zeno-ai \\
+ --image \${{ secrets.DOCKERHUB_USERNAME }}/zeno-economist \\
+ --region europe-west1 \\
+ --platform managed \\
+ --set-env-vars GOOGLE_API_KEY=\${{ secrets.GOOGLE_API_KEY }},DATABASE_URL=\${{ secrets.DATABASE_URL }},...`,
+    desc: "Deploy the container with environment variables and managed scaling.",
+  },
+];
 
 export default function RoutingCardsPage() {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
     <main className="min-h-screen bg-[#D3D7DF] pt-32">
       <DocsNavBar />
@@ -49,7 +322,7 @@ export default function RoutingCardsPage() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
             <div className="flex-1 w-full">
               <p className="text-sm md:text-base text-[#232C3B] mb-2">
-                layout and modular design of the agentic AI
+                Layout and Modular design of the agentic AI
                 <br />
                 codebase, within the application
               </p>
@@ -320,72 +593,291 @@ Host: localhost:8000`}
                 </pre>
               </div>
             </div>
-            <div className="mb-10 text-sm text-[#232C3B]">
-              <div className=" text-2xl font-semibold">Notes:</div>
-              <ul className="text-[18px] list-disc pl-5">
-                <li>Returns a simple JSON object indicating system health.</li>
-                <li>Used for monitoring and debugging in production.</li>
-              </ul>
-            </div>
 
-            <h2 className="md:text-2xl font-bold mt-10 mb-4 text-[#232C3B]">
-              Economic Models used in Zeno AI
-            </h2>
-            <ol className="mb-6 list-decimal pl-5 text-[#232C3B]">
-              <li className="mb-2">
-                <span className="font-semibold">Trade Forecasting Models</span>
-                <ul className=" text-[18px] list-disc pl-6">
-                  <li>
-                    <span className="font-semibold">ARIMA:</span> Classical
-                    time-series model for short- and medium-term forecasting
-                    using historical export/import and price data.
-                  </li>
-                  <li>
-                    <span className="font-semibold">Prophet:</span> Handles
-                    complex seasonality and trend changes in trade data for
-                    robust forecasting.
-                  </li>
-                  <li>
-                    <span className="font-semibold">XGBoost:</span> Machine
-                    learning model capturing nonlinear relationships by
-                    combining decision trees for accurate trade volume
-                    prediction under variable conditions.
-                  </li>
-                </ul>
-              </li>
-              <li className="mb-2">
-                <span className="font-semibold">
-                  Scenario Simulation Models
-                </span>
-                <ul className="list-disc pl-6">
-                  <li>
-                    <span className="font-semibold">
-                      Computable General Equilibrium (CGE) Models:
-                    </span>{" "}
-                    Economy-wide models using social accounting matrices and
-                    policy variables to simulate impacts of shocks like tariffs
-                    and drought on GDP, welfare, and sector outputs.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span className="font-semibold">Impact Analysis Models</span>
-                <ul className="list-disc pl-6">
-                  <li>
-                    <span className="font-semibold">
-                      Structural Econometric Models:
-                    </span>{" "}
-                    Estimate elasticities and policy effects on trade volumes
-                    and assess ripple economic impacts based on scenario
-                    outputs.
-                  </li>
-                </ul>
-              </li>
-            </ol>
+            <div className="mt-10 flex items-center justify-center px-4">
+              <div className="max-w-7xl w-full rounded-lg p-8 md:p-16 flex flex-col md:flex-row gap-8">
+                <div className="flex-1 flex flex-col justify-center">
+                  <h1 className="md:text-4xl font-bold text-[#232C3B] mb-12 text-center md:text-left">
+                    Economic Models used in Zeno AI
+                  </h1>
+                  <div className="space-y-8">
+                    <div>
+                      <h2 className="font-semibold text-2xl text-[#232C3B]">
+                        Trade Forecasting Models
+                      </h2>
+                      <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal space-y-2">
+                        <li>
+                          <span className="text-xl font-medium">ARIMA:</span>{" "}
+                          Classical time-series model for short- and medium-term
+                          forecasting using historical export/import and price
+                          data.
+                        </li>
+                        <li>
+                          <span className="text-xl font-medium">Prophet:</span>{" "}
+                          Handles complex seasonality and trend changes in trade
+                          data for robust forecasting.
+                        </li>
+                        <li>
+                          <span className="text-xl font-medium">XGBoost:</span>{" "}
+                          Machine learning model capturing nonlinear
+                          relationships by combining decision trees for accurate
+                          trade volume prediction under variable conditions
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h2 className="font-semibold text-2xl text-[#232C3B]">
+                        Scenario Simulation Models
+                      </h2>
+                      <ul className="list-disc ml-5 mt-2 text-black text-base font-normal">
+                        <li>
+                          <span className="font-medium">
+                            Computable General Equilibrium (CGE) Models:
+                          </span>{" "}
+                          Economy-wide models using social accounting matrices
+                          and policy variables to simulate impacts of shocks
+                          like tariffs and drought on GDP, welfare, and sector
+                          outputs.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col items-center justify-between">
+                  <div className="w-full flex justify-center items-start mb-8 md:mb-12">
+                    <img
+                      src="/pics/chartt.png"
+                      alt="Economic Models Chart"
+                      className="w-[420px] h-[260px] object-contain"
+                    />
+                  </div>
+                  <div className="w-full">
+                    <h2 className="font-semibold text-2xl text-[#232C3B]">
+                      Impact Analysis Models
+                    </h2>
+                    <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal">
+                      <li>
+                        <span className="font-medium text-xl text-[#232C3B]">
+                          Structural Econometric Models:
+                        </span>{" "}
+                        Estimate elasticities and policy effects on trade
+                        volumes and assess ripple economic impacts based on
+                        scenario outputs.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
-
+          <section className="w-full  py-20 flex flex-col items-center font-sans">
+      <div className="w-full max-w-6xl mx-auto px-2 md:px-8">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#232C3B] mb-16 tracking-tight text-center drop-shadow-sm">
+          Data Pipeline 
+        </h2>
+        <div className="relative">
+          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 bg-[#232C3B]/10 z-0 rounded-full" />
+          <div className="flex flex-col gap-0">
+            {pipelineSteps.map((step, idx) => {
+              const isLeft = idx % 2 === 0;
+              return (
+                <div
+                  key={idx}
+                  className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
+                >
+                  <div className="md:hidden flex w-full justify-center relative pb-10">
+                    <div className="flex flex-col items-center w-full">
+                      <div className="bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-12 h-12 flex items-center justify-center mb-2 text-2xl">
+                        {step.icon}
+                      </div>
+                      <div className="bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-6 py-6 w-full text-left transition-all min-h-[180px]">
+                        <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                          STEP {step.step}
+                        </div>
+                        <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                          {step.title}
+                        </div>
+                        <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                          {step.description}
+                        </div>
+                        {step.details}
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {step.frameworks.map((fw, i) => (
+                            <span
+                              key={i}
+                              className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                            >
+                              {fw.icon}
+                              {fw.name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hidden md:flex w-full items-center">
+                    {isLeft && (
+                      <>
+                        <div className="w-1/2 flex justify-end relative">
+                          <div className="absolute right-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
+                          <div
+                            className="absolute right-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
+                          >
+                            {step.icon}
+                          </div>
+                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-right ml-auto mr-[48px] relative">
+                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                              STEP {step.step}
+                            </div>
+                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                              {step.title}
+                            </div>
+                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                              {step.description}
+                            </div>
+                            {step.details}
+                            <div className="flex flex-wrap gap-2 mt-2 justify-end">
+                              {step.frameworks.map((fw, i) => (
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                                >
+                                  {fw.icon}
+                                  {fw.name}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="w-1/2" />
+                      </>
+                    )}
+                    {!isLeft && (
+                      <>
+                        <div className="w-1/2" />
+                        <div className="w-1/2 flex justify-start relative">
+                          <div className="absolute left-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
+                          <div
+                            className="absolute left-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
+                          >
+                            {step.icon}
+                          </div>
+                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-left mr-auto ml-[48px] relative">
+                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                              STEP {step.step}
+                            </div>
+                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                              {step.title}
+                            </div>
+                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                              {step.description}
+                            </div>
+                            {step.details}
+                            <div className="flex flex-wrap gap-2 mt-2 justify-start">
+                              {step.frameworks.map((fw, i) => (
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                                >
+                                  {fw.icon}
+                                  {fw.name}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+      <main className="min-h-screen w-full flex items-center justify-center px-4 py-12 font-sans">
+        <div className="w-full max-w-7xl flex flex-col md:flex-row gap-10">
+          <section className="md:w-[70%] w-full">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#263C61] mb-12 text-left tracking-tight drop-shadow-md">
+              Zeno AI FastAPI Deployment Steps
+            </h1>
+            <ol className="relative border-l-[5px] border-[#263C61]/30 ml-5 space-y-0">
+              {steps.map((step, idx) => (
+                <li key={idx} className="mb-12 last:mb-0 flex relative z-0">
+                  <span className="absolute -left-[68px] top-4 flex flex-col items-center z-10 select-none">
+                    <span
+                      className={clsx(
+                        "w-10 h-10 flex items-center justify-center text-[#263C61] bg-white rounded-full shadow border-2 border-[#263C61] text-xl font-extrabold text-center tracking-wider"
+                      )}
+                      style={{
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {idx + 1}
+                    </span>
+                    {idx !== steps.length - 1 && (
+                      <span className="w-1 h-full bg-gradient-to-b from-[#263C61]/30 via-[#CAD3E4] to-transparent mt-1" />
+                    )}
+                  </span>
+                  <div
+                    className={clsx(
+                      "ml-10 flex-1 relative group/card transition-all duration-300",
+                      "bg-white/90 rounded-2xl shadow-xl border border-[#CAD3E4] overflow-hidden",
+                      "cursor-pointer text-left"
+                    )}
+                    tabIndex={0}
+                    onMouseEnter={() => setOpenIdx(idx)}
+                    onMouseLeave={() => setOpenIdx(null)}
+                    onFocus={() => setOpenIdx(idx)}
+                    onBlur={() => setOpenIdx(null)}
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center px-8 pt-6 pb-2">
+                      <h2 className="text-lg md:text-xl font-bold text-[#263C61] tracking-tight text-left">
+                        {step.title}
+                      </h2>
+                    </div>
+                    <div className="px-8 pb-6 pt-0">
+                      <p className="text-[#263C61] text-base mb-5 leading-relaxed text-left">
+                        {step.desc}
+                      </p>
+                      <div
+                        className={clsx(
+                          "grid transition-all duration-300",
+                          openIdx === idx
+                            ? "max-h-[350px] opacity-100 scale-100 mt-0 mb-0"
+                            : "max-h-0 opacity-0 scale-95 -mt-6 mb-0 pointer-events-none"
+                        )}
+                        style={{
+                          transitionProperty:
+                            "max-height, opacity, transform, margin",
+                        }}
+                      >
+                        <pre className="rounded-xl bg-[#263C61] text-[#CAD3E4] text-sm md:text-base py-4 px-6 overflow-x-auto font-mono whitespace-pre-wrap border border-[#CAD3E4] shadow-xl transition-opacity duration-1000">
+                          {step.code}
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <aside className="md:w-[30%] w-full md:block flex-shrink-0">
+            <div className="sticky top-10">
+              <img
+                src="/pics/data.png"
+                alt="Zeno AI Illustration"
+                className="w-full max-w-xs mx-auto mt-60 rounded-2xl shadow-lg border-[#263C61]"
+                style={{ background: "#fff" }}
+              />
+            </div>
+          </aside>
+        </div>
+      </main>
+      
       <Footer />
     </main>
   );

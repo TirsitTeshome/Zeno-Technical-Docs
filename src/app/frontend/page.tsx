@@ -108,7 +108,7 @@ export default function Frontend() {
                 Coding Structure
               </h2>
               <div className="flex flex-col md:flex-row items-start gap-4">
-                <div className="flex flex-col items-center pt-1 md:pt-2">
+                <div className="hidden md:flex flex-col items-center pt-1 md:pt-2">
                   <div className="w-3 h-3 md:w-4 md:h-4 bg-[#232C3B] rounded-full mb-1" />
                   <div className="w-1 h-24 md:h-36 bg-[#232C3B] rounded" />
                 </div>
@@ -132,8 +132,8 @@ export default function Frontend() {
             </div>
 
             <div className="flex-1 w-full flex justify-center">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-md shadow-xl">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
 {`src/app/
 ├── analytics/
 │   ├── components/
@@ -157,8 +157,9 @@ export default function Frontend() {
 │   └── page.tsx
 ├── hooks/
 ├── landing_page/
-├── profile/`}</pre>
-                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-md shadow-xl">
+├── profile/`}
+                </pre>
+                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-hidden w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
 {`│   ├── ProfileMenu/
 │   └── Sidebar/
 ├── sharedComponents/
@@ -177,7 +178,8 @@ export default function Frontend() {
 ├── usermanagement/
 ├── utils/
 ├── welcome/
-└── zeno-chat/`}</pre>
+└── zeno-chat/`}
+                </pre>
               </div>
             </div>
           </div>
@@ -272,7 +274,7 @@ export default function Frontend() {
         </div>
       </div>
 
-      <div className="bg-[#D3D7DF] py-12 md:py-16 px-4 md:px-6 lg:px-8">
+      <div className="bg-[#D3D7DF] pt-12 md:py-16 px-4 md:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12">
             <div className="flex-1 min-w-0">
@@ -435,18 +437,16 @@ export default function Frontend() {
         </div>
       </div>
 
-      {/* --- Frontend Deployment Section --- */}
-    
       <div className="w-full max-w-8xl flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-5 px-2 md:px-6 lg:px-8 bg-[#D3D7DF]">
         <div className="flex-1">
-          <div className="relative bg-[#D3D7DF] py-8 md:py-10 lg:py-16 flex justify-center">
+          <div className="relative bg-[#D3D7DF] md:py-10 lg:py-16 flex justify-center">
             <div className="flex flex-col sm:flex-row max-w-5xl w-full">
               <div className="relative flex flex-col items-center w-full sm:w-2/5 min-w-[180px] sm:min-w-[230px] max-w-[300px] mx-auto sm:mx-0">
                 <svg
                   width="100%"
                   height="180"
                   viewBox="0 0 180 180"
-                  className="absolute left-0 sm:left-2 top-10 z-10 w-[180px] sm:w-[220px] lg:w-[250px]"
+                  className="absolute left-1/2 -translate-x-1/2 top-10 z-10 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px]"
                   preserveAspectRatio="xMidYMid meet"
                 >
                   <path
@@ -457,11 +457,11 @@ export default function Frontend() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <div className="relative mt-[120px] sm:mt-[150px] md:mt-[170px] text-center sm:text-left">
-                  <div className="font-bold text-lg sm:text-xl text-[#232C3B]">
+                <div className="relative mt-[150px] sm:mt-[140px] md:mt-[150px] lg:mt-[160px] text-center">
+                  <div className="font-bold text-lg sm:text-xl md:text-2xl text-[#232C3B]">
                     FRONTEND <span className="font-normal [#232323]">DEPLOYMENT</span>
                   </div>
-                  <div className="text-lg text-gray-500 max-w-[240px] mt-2 leading-snug mx-auto sm:mx-0">
+                  <div className="text-sm sm:text-base md:text-lg text-gray-500 max-w-[240px] mt-2 leading-snug mx-auto">
                     The front-end application was deployed using Vercel. The project was first prepared and built locally, and the GitHub repository was then connected to Vercel. After changes were pushed, the application was automatically built and deployed by Vercel.
                   </div>
                 </div>

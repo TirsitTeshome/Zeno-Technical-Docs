@@ -19,7 +19,7 @@ const leftSteps = [
   {
     number: "03",
     title: "Configure Build Settings on Vercel",
-    desc: "EIn zeno/settings.py, we set DEBUG = False for production, configured ALLOWED_HOSTS to include our Heroku domain, and moved sensitive settings like SECRET_KEY into environment variables accessed via os.getenv().",
+    desc: "In zeno/settings.py, we set DEBUG = False for production, configured ALLOWED_HOSTS to include our Heroku domain, and moved sensitive settings like SECRET_KEY into environment variables accessed via os.getenv().",
     color: "bg-[#5B80AC]",
   },
   {
@@ -49,7 +49,7 @@ const rightSteps = [
     desc: "We set environment variables on Heroku. We securely added critical environment variables via CLI. Heroku config:set SECRET_KEY='the_secret_key' DATABASE_URL='the_database_url' DJANGO_SETTINGS_MODULE='zeno.settings' -a zeno-backend-api",
     color: "bg-[#36496E]",
   },
-    {
+  {
     number: "08",
     title: "Monitor Build Logs and Deployment",
     desc: "We deployed the backend code. We pushed our main branch to Heroku: git push heroku main",
@@ -61,12 +61,12 @@ const rightSteps = [
     desc: "This triggered a build, installed dependencies, and launched the application.",
     color: "bg-[#36496E]",
   },
-    {
+  {
     number: "10",
     title: "Final Testing and Validation",
     desc: "We tested all API endpoints using Postman. This helped us confirm that every endpoint functioned as intended and caught unexpected issues early.",
     color: "bg-[#36496E]",
-  }
+  },
 ];
 
 export default function RoutingCardsPage() {
@@ -120,7 +120,7 @@ export default function RoutingCardsPage() {
                 Coding Structure
               </h2>
               <div className="flex flex-col md:flex-row items-start gap-4">
-                <div className="flex flex-col items-center pt-1 md:pt-2">
+                <div className="hidden md:flex flex-col items-center pt-1 md:pt-2">
                   <div className="w-3 h-3 md:w-4 md:h-4 bg-[#D3D7DF] rounded-full mb-1" />
                   <div className="w-1 h-24 md:h-36 bg-[#D3D7DF] rounded" />
                 </div>
@@ -143,8 +143,8 @@ export default function RoutingCardsPage() {
             </div>
 
             <div className="flex-1 w-full flex justify-center">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-sm shadow-xl">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+                <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
                   {`├── agents/
 │   ├── __pycache__/
 │   ├── migrations/
@@ -167,7 +167,7 @@ export default function RoutingCardsPage() {
 │   ├── urls.py
 │   └── views.py`}
                 </pre>
-                <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-sm shadow-xl">
+                <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
                   {`├── runs/
 │   ├── __pycache__/
 │   ├── migrations/
@@ -189,7 +189,7 @@ export default function RoutingCardsPage() {
 │   ├── tests.py
 │   └── views.py`}
                 </pre>
-                <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-sm shadow-xl">
+                <pre className="bg-[#D3D7DF] text-[#151E31] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
                   {`├── conversations/
 │   ├── __pycache__/
 │   ├── migrations/
@@ -421,7 +421,7 @@ export default function RoutingCardsPage() {
           </div>
         </div>
       </section>
-      <section className="w-full py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[#151E31]">
+      <section className="w-full pt-12 md:py-8 px-4 md:px-6 lg:px-8 bg-[#151E31]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-12">
             <div className="max-w-3xl flex-1">
@@ -492,18 +492,8 @@ export default function RoutingCardsPage() {
                   priority
                 />
               </div>
-
               <div
-                className={`
-      absolute rounded-xl 
-      w-[90%] h-[90%]
-      sm:w-[92%] sm:h-[92%]
-      md:w-[94%] md:h-[94%]
-      xl:w-[124%] xl:h-[94%]
-      top-4 sm:top-5 md:top-10
-      left-1/2 -translate-x-1/2
-      md:left-6 md:translate-x-0
-    `}
+                className="absolute rounded-xl w-[90%] h-[90%] sm:w-[92%] sm:h-[92%] md:w-[94%] md:h-[94%] xl:w-[94%] xl:h-[94%] top-4 sm:top-5 md:top-10 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0"
               >
                 <Image
                   src="/pics/api-test-dark.png"
@@ -519,7 +509,7 @@ export default function RoutingCardsPage() {
       </section>
 
       <div className="w-full max-w-6.5xl flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-5 px-2 md:px-6 lg:px-8 bg-[#151E31]">
-        <div className="flex-1 ">
+        <div className="flex-1">
           <div className="relative bg-[#151E31] py-8 md:py-10 lg:py-16 flex justify-center">
             <div className="flex flex-col sm:flex-row max-w-5xl w-full">
               <div className="relative flex flex-col items-center w-full sm:w-2/5 min-w-[180px] sm:min-w-[230px] max-w-[300px] mx-auto sm:mx-0">
@@ -527,7 +517,7 @@ export default function RoutingCardsPage() {
                   width="100%"
                   height="180"
                   viewBox="0 0 180 180"
-                  className="absolute left-0 sm:left-2 top-10 z-10 w-[180px] sm:w-[220px] lg:w-[250px]"
+                  className="absolute left-1/2 -translate-x-1/2 top-10 z-10 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px]"
                   preserveAspectRatio="xMidYMid meet"
                 >
                   <path
@@ -538,11 +528,11 @@ export default function RoutingCardsPage() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <div className="relative mt-[120px] sm:mt-[150px] md:mt-[170px] text-center sm:text-left">
-                  <div className="font-bold text-lg sm:text-xl text-[#fdfdfd]">
+                <div className="relative mt-[150px] sm:mt-[140px] md:mt-[150px] lg:mt-[160px] text-center">
+                  <div className="font-bold text-lg sm:text-xl md:text-2xl text-[#fdfdfd]">
                     BACKEND <span className="font-normal text-[#bfbff0]">DEPLOYMENT</span>
                   </div>
-                  <div className="text-lg text-[#a9b9d3] max-w-[240px] mt-2 leading-snug mx-auto sm:mx-0">
+                  <div className="text-sm sm:text-base md:text-lg text-[#a9b9d3] max-w-[240px] mt-2 leading-snug mx-auto">
                     The front-end application was deployed using Vercel. The project was first prepared and built locally, and the GitHub repository was then connected to Vercel. After changes were pushed, the application was automatically built and deployed by Vercel.
                   </div>
                 </div>
@@ -577,14 +567,14 @@ export default function RoutingCardsPage() {
           </div>
         </div>
         <div className="flex-1">
-          <div className="relative [#bg-[#151E31] ] py-8 md:py-10 lg:py-16 flex justify-center">
+          <div className="relative bg-[#151E31] py-8 md:py-10 lg:py-16 flex justify-center">
             <div className="flex flex-col sm:flex-row-reverse max-w-5xl w-full">
               <div className="flex flex-col flex-1 pr-0 sm:pr-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
                 {rightSteps.map((step, idx) => (
                   <div key={idx} className="flex flex-row-reverse items-center">
                     <div className="flex flex-col items-center">
                       <div
-                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#becad6]  font-bold text-xl sm:text-2xl border-1 border-white shadow-md"
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#becad6] font-bold text-xl sm:text-2xl border-1 border-white shadow-md"
                         style={{ marginLeft: "-20px", zIndex: 10 }}
                       >
                         {step.number}

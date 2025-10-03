@@ -10,7 +10,7 @@ const teachers = Teachers({
 });
 
 export const metadata: Metadata = {
-  title: "Zeno",
+  title: "Zeno Technical Documentation",
   description: "Economists Support Agent",
 };
 

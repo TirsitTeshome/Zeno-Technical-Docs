@@ -13,12 +13,8 @@ import {
   FaCogs,
   FaBullhorn,
   FaRocket,
-} from "react-icons/fa";
-import {
   FaDatabase,
   FaProjectDiagram,
-} from "react-icons/fa";
-import {
   FaCloudDownloadAlt,
   FaCheckCircle,
   FaRegFilePdf,
@@ -36,6 +32,7 @@ import {
   SiScikitlearn,
   SiSqlalchemy,
 } from "react-icons/si";
+
 const pipelineSteps = [
   {
     icon: <FaCloudDownloadAlt />,
@@ -150,6 +147,7 @@ const pipelineSteps = [
     ],
   },
 ];
+
 const steping = [
   {
     icon: <FaStore size={28} className="text-white" />,
@@ -199,20 +197,11 @@ const steps = [
   {
     title: "Create Dockerfile",
     code: `FROM python:3.11-slim
-
-
 WORKDIR /app
 ENV PYTHONPATH=/app
-
-
-# Install dependencies
 RUN pip install --no-cache-dir -r zeno_agent/requirements.txt
 RUN pip install fastapi uvicorn
-
-
 EXPOSE 8080
-
-
 CMD ["uvicorn", "zeno_agent.agent:app", "--host", "0.0.0.0", "--port", "8080"]`,
     desc: "Use the lightweight Python 3.11 slim image to optimize container size and performance.",
   },
@@ -277,86 +266,52 @@ venv/
 
 export default function RoutingCardsPage() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
+
   return (
     <main className="min-h-screen bg-[#D3D7DF] pt-32">
       <DocsNavBar />
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <h1 className="inline-block text-4xl md:text-6xl font-bold text-[#D3D7DF] mb-10 mt-10 bg-[#232C3B] px-4 py-2 rounded">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="inline-block text-4xl sm:text-5xl lg:text-6xl font-bold text-[#D3D7DF] mb-10 mt-10 bg-[#232C3B] px-4 py-2 rounded">
           AI Documentation
         </h1>
-        <h1 className="text-3xl md:text-4xl font-bold text-[#232C3B] mb-10 mt-5">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#232C3B] mb-10 mt-5">
           Overview
         </h1>
-        <p className="text-base md:text-lg text-[#05192F] mb-4">
+        <p className="text-base sm:text-lg text-[#05192F] mb-4">
           The AI layer of Zeno AI is the core intelligence engine that powers
           forecasting, scenario simulation, and evidence-based policy
           recommendations. It is designed as a hybrid system that combines
           Machine Learning (ML) techniques with Retrieval-Augmented Generation
           (RAG) to deliver accurate, context-aware insights to economists.
         </p>
-        <p className="text-base md:text-lg text-[#05192F] mb-12">
+        <p className="text-base sm:text-lg text-[#05192F] mb-12">
           The AI is built to augment human expertise rather than replace it.
           Economists bring domain knowledge and policy experience, while Zeno AI
           enhances decision-making by automating data retrieval, validating
           scenarios, and surfacing insights that would be difficult to uncover
           manually.
         </p>
-                  <section className="w-full  py-20 flex flex-col items-center font-sans">
-      <div className="w-full max-w-6xl mx-auto px-2 md:px-8">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-[#232C3B] mb-16 tracking-tight text-center drop-shadow-sm">
-          Data Pipeline 
-        </h2>
-        <div className="relative">
-          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 bg-[#232C3B]/10 z-0 rounded-full" />
-          <div className="flex flex-col gap-0">
-            {pipelineSteps.map((step, idx) => {
-              const isLeft = idx % 2 === 0;
-              return (
-                <div
-                  key={idx}
-                  className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
-                >
-                  <div className="md:hidden flex w-full justify-center relative pb-10">
-                    <div className="flex flex-col items-center w-full">
-                      <div className="bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-12 h-12 flex items-center justify-center mb-2 text-2xl">
-                        {step.icon}
-                      </div>
-                      <div className="bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-6 py-6 w-full text-left transition-all min-h-[180px]">
-                        <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
-                          STEP {step.step}
-                        </div>
-                        <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
-                          {step.title}
-                        </div>
-                        <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
-                          {step.description}
-                        </div>
-                        {step.details}
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {step.frameworks.map((fw, i) => (
-                            <span
-                              key={i}
-                              className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
-                            >
-                              {fw.icon}
-                              {fw.name}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:flex w-full items-center">
-                    {isLeft && (
-                      <>
-                        <div className="w-1/2 flex justify-end relative">
-                          <div className="absolute right-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
-                          <div
-                            className="absolute right-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
-                          >
+        <section className="w-full py-20 flex flex-col items-center font-sans">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#232C3B] mb-16 tracking-tight text-center">
+              Data Pipeline
+            </h2>
+            <div className="relative">
+              <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 bg-[#232C3B]/10 z-0 rounded-full" />
+              <div className="flex flex-col gap-0">
+                {pipelineSteps.map((step, idx) => {
+                  const isLeft = idx % 2 === 0;
+                  return (
+                    <div
+                      key={idx}
+                      className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
+                    >
+                      <div className="md:hidden flex w-full justify-center relative pb-10">
+                        <div className="flex flex-col items-center w-full">
+                          <div className="bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-12 h-12 flex items-center justify-center mb-2 text-2xl">
                             {step.icon}
                           </div>
-                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-right ml-auto mr-[48px] relative">
+                          <div className="bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-6 py-6 w-full text-left transition-all min-h-[180px]">
                             <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
                               STEP {step.step}
                             </div>
@@ -367,7 +322,7 @@ export default function RoutingCardsPage() {
                               {step.description}
                             </div>
                             {step.details}
-                            <div className="flex flex-wrap gap-2 mt-2 justify-end">
+                            <div className="flex flex-wrap gap-2 mt-2">
                               {step.frameworks.map((fw, i) => (
                                 <span
                                   key={i}
@@ -380,130 +335,205 @@ export default function RoutingCardsPage() {
                             </div>
                           </div>
                         </div>
-                        <div className="w-1/2" />
-                      </>
-                    )}
-                    {!isLeft && (
-                      <>
-                        <div className="w-1/2" />
-                        <div className="w-1/2 flex justify-start relative">
-                          <div className="absolute left-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
-                          <div
-                            className="absolute left-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
-                          >
-                            {step.icon}
-                          </div>
-                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-left mr-auto ml-[48px] relative">
-                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
-                              STEP {step.step}
+                      </div>
+                      <div className="hidden md:flex w-full items-center">
+                        {isLeft && (
+                          <>
+                            <div className="w-1/2 flex justify-end relative">
+                              <div className="absolute right-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
+                              <div className="absolute right-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl">
+                                {step.icon}
+                              </div>
+                              <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-right ml-auto mr-[48px]">
+                                <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                                  STEP {step.step}
+                                </div>
+                                <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                                  {step.title}
+                                </div>
+                                <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                                  {step.description}
+                                </div>
+                                {step.details}
+                                <div className="flex flex-wrap gap-2 mt-2 justify-end">
+                                  {step.frameworks.map((fw, i) => (
+                                    <span
+                                      key={i}
+                                      className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                                    >
+                                      {fw.icon}
+                                      {fw.name}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
                             </div>
-                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
-                              {step.title}
+                            <div className="w-1/2" />
+                          </>
+                        )}
+                        {!isLeft && (
+                          <>
+                            <div className="w-1/2" />
+                            <div className="w-1/2 flex justify-start relative">
+                              <div className="absolute left-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
+                              <div className="absolute left-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl">
+                                {step.icon}
+                              </div>
+                              <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-left mr-auto ml-[48px]">
+                                <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                                  STEP {step.step}
+                                </div>
+                                <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                                  {step.title}
+                                </div>
+                                <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                                  {step.description}
+                                </div>
+                                {step.details}
+                                <div className="flex flex-wrap gap-2 mt-2 justify-start">
+                                  {step.frameworks.map((fw, i) => (
+                                    <span
+                                      key={i}
+                                      className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                                    >
+                                      {fw.icon}
+                                      {fw.name}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
                             </div>
-                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
-                              {step.description}
-                            </div>
-                            {step.details}
-                            <div className="flex flex-wrap gap-2 mt-2 justify-start">
-                              {step.frameworks.map((fw, i) => (
-                                <span
-                                  key={i}
-                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
-                                >
-                                  {fw.icon}
-                                  {fw.name}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-        <div className="mt-10 flex items-center justify-center px-4">
-              <div className="max-w-7xl w-full rounded-lg p-8 md:p-16 flex flex-col md:flex-row gap-8">
-                <div className="flex-1 flex flex-col justify-center">
-                  <h1 className="md:text-4xl font-bold text-[#232C3B] mb-12 text-center md:text-left">
-                    Economic Models used in Zeno AI
-                  </h1>
-                  <div className="space-y-8">
-                    <div>
-                      <h2 className="font-semibold text-2xl text-[#232C3B]">
-                        Trade Forecasting Models
-                      </h2>
-                      <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal space-y-2">
-                        <li>
-                          <span className="text-xl font-medium">ARIMA:</span>{" "}
-                          Classical time-series model for short- and medium-term
-                          forecasting using historical export/import and price
-                          data.
-                        </li>
-                        <li>
-                          <span className="text-xl font-medium">Prophet:</span>{" "}
-                          Handles complex seasonality and trend changes in trade
-                          data for robust forecasting.
-                        </li>
-                        <li>
-                          <span className="text-xl font-medium">XGBoost:</span>{" "}
-                          Machine learning model capturing nonlinear
-                          relationships by combining decision trees for accurate
-                          trade volume prediction under variable conditions
-                        </li>
-                      </ul>
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <h2 className="font-semibold text-2xl text-[#232C3B]">
-                        Scenario Simulation Models
-                      </h2>
-                      <ul className="list-disc ml-5 mt-2 text-black text-base font-normal">
-                        <li>
-                          <span className="font-medium">
-                            Computable General Equilibrium (CGE) Models:
-                          </span>{" "}
-                          Economy-wide models using social accounting matrices
-                          and policy variables to simulate impacts of shocks
-                          like tariffs and drought on GDP, welfare, and sector
-                          outputs.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex-1 flex flex-col items-center justify-between">
-                  <div className="w-full flex justify-center items-start mb-8 md:mb-12">
-                    <img
-                      src="/pics/chartt.png"
-                      alt="Economic Models Chart"
-                      className="w-[420px] h-[260px] object-contain"
-                    />
-                  </div>
-                  <div className="w-full">
-                    <h2 className="font-semibold text-2xl text-[#232C3B]">
-                      Impact Analysis Models
-                    </h2>
-                    <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal">
-                      <li>
-                        <span className="font-medium text-xl text-[#232C3B]">
-                          Structural Econometric Models:
-                        </span>{" "}
-                        Estimate elasticities and policy effects on trade
-                        volumes and assess ripple economic impacts based on
-                        scenario outputs.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
+          </div>
+        </section>
+        <style jsx>{`
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+          }
+          .delay-1 {
+            animation-delay: 0.2s;
+          }
+          .delay-2 {
+            animation-delay: 0.4s;
+          }
+          .delay-3 {
+            animation-delay: 0.6s;
+          }
+        `}</style>
+        <div className="mt-10 px-4">
+          <div className="max-w-7xl mx-auto rounded-lg p-6 sm:p-8">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#232C3B] mb-8 text-center">
+              Economic Models used in Zeno AI
+            </h1>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-[#232C3B] mb-10 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+
+              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-2">
+                <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                  2
+                </div>
+                <FaProjectDiagram className="text-3xl mb-4" />
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+                  Scenario Simulation
+                </h2>
+                <ul className="space-y-4 text-sm sm:text-base">
+                  <li className="flex flex-col">
+                    <span className="font-medium">CGE Models</span>
+                    <p className="opacity-80">
+                      Computable General Equilibrium models simulate economy-wide impacts of shocks like tariffs, droughts, or policy changes. Uses social accounting matrices to assess effects on GDP, welfare, and sector outputs, enabling what-if analysis for strategic planning.
+                    </p>
+                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                      Economy-Wide
+                    </span>
+                  </li>
+                </ul>
+                <p className="mt-4 text-sm sm:text-base opacity-80">
+                  Applications: Policy evaluation, trade agreement analysis, and resilience planning for agricultural markets.
+                </p>
+              </div>
+                            <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-1">
+                <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                  1
+                </div>
+                <FaChartLine className="text-3xl mb-4" />
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+                  Trade Forecasting
+                </h2>
+                <ul className="space-y-4 text-sm sm:text-base">
+                  <li className="flex flex-col">
+                    <span className="font-medium">ARIMA</span>
+                    <p className="opacity-80">
+                      A classical time-series model leveraging historical export/import and price data for accurate short- and medium-term trade forecasts. Ideal for predicting seasonal trends in agricultural markets.
+                    </p>
+                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                      Time-Series
+                    </span>
+                  </li>
+                  <li className="flex flex-col">
+                    <span className="font-medium">Prophet</span>
+                    <p className="opacity-80">
+                      Handles complex seasonality and trend changes, enabling robust forecasting for volatile trade data. Excels in modeling irregular patterns like weather-driven price fluctuations.
+                    </p>
+                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                      Seasonal
+                    </span>
+                  </li>
+                  <li className="flex flex-col">
+                    <span className="font-medium">XGBoost</span>
+                    <p className="opacity-80">
+                      A machine learning model capturing nonlinear relationships through decision trees. Predicts trade volumes under variable conditions, such as policy changes or market shocks, with high accuracy.
+                    </p>
+                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                      Nonlinear
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-3">
+                <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                  3
+                </div>
+                <FaCogs className="text-3xl mb-4" />
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+                  Impact Analysis
+                </h2>
+                <ul className="space-y-4 text-sm sm:text-base">
+                  <li className="flex flex-col">
+                    <span className="font-medium">Structural Econometric</span>
+                    <p className="opacity-80">
+                      Estimates elasticities and policy effects on trade volumes, assessing ripple effects across the economy. Combines scenario outputs with statistical methods to quantify impacts like price changes or supply chain disruptions.
+                    </p>
+                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                      Policy Impact
+                    </span>
+                  </li>
+                </ul>
+                <p className="mt-4 text-sm sm:text-base opacity-80">
+                  Applications: Evaluating trade policies, subsidy impacts, and market interventions for informed decision-making.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#232C3B] mb-10 mt-10">
           Tech Stack
         </h1>
         <div className="w-full flex justify-center mb-12">
@@ -518,7 +548,7 @@ export default function RoutingCardsPage() {
         </div>
       </div>
 
-      <section className="w-full py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[#D3D7DF]">
+      <section className="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#D3D7DF]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
             <div className="flex-1 w-full">
@@ -531,7 +561,7 @@ export default function RoutingCardsPage() {
                 Coding Structure
               </h2>
               <div className="flex flex-col md:flex-row items-start gap-4">
-                <div className="flex flex-col items-center pt-1 md:pt-2">
+                <div className="hidden md:flex flex-col items-center pt-1 md:pt-2">
                   <div className="w-3 h-3 md:w-4 md:h-4 bg-[#232C3B] rounded-full mb-1" />
                   <div className="w-1 h-24 md:h-36 bg-[#232C3B] rounded" />
                 </div>
@@ -559,8 +589,8 @@ export default function RoutingCardsPage() {
             </div>
 
             <div className="flex-1 w-full flex justify-center">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-md shadow-xl">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
                   {`zeno-ai/
 ├── .git/
 ├── .github/
@@ -583,7 +613,7 @@ export default function RoutingCardsPage() {
     ├── root_agent.yaml
     ├── scenario.py`}
                 </pre>
-                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-4 sm:px-6 py-4 md:px-8 md:py-6 leading-relaxed font-mono overflow-x-auto max-w-full sm:max-w-xs md:max-w-md shadow-xl">
+                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
                   {`   ├── prompts/
     │   ├── missing_data.txt
     │   ├── root_agent.txt
@@ -606,7 +636,7 @@ export default function RoutingCardsPage() {
         </div>
       </section>
 
-      <div className="w-full py-12 md:py-16 bg-[#232C3B] flex flex-col items-center px-4 md:px-6 lg:px-8">
+      <div className="w-full py-12 sm:py-16 bg-[#232C3B] flex flex-col items-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl w-full flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
           <div className="bg-[#D3D7DF] rounded-2xl shadow-lg p-6 md:p-8 w-full max-w-md">
             <h2 className="text-xl md:text-2xl font-bold text-[#232C3B] mb-2">
@@ -678,15 +708,15 @@ export default function RoutingCardsPage() {
                   venv zenoenv
                 </div>
                 <div>
-                  <span className="font-bold">ZenoStaff: /zeno-ai$</span>source
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span> source
                   zenoenv/bin/activate
                 </div>
                 <div>
-                  <span className="font-bold">ZenoStaff: /zeno-ai$</span>uv pip
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span> uv pip
                   install -r requirements.txt
                 </div>
                 <div>
-                  <span className="font-bold">ZenoStaff: /zeno-ai$</span>adk
+                  <span className="font-bold">ZenoStaff: /zeno-ai$</span> adk
                   web/
                 </div>
               </div>
@@ -697,90 +727,72 @@ export default function RoutingCardsPage() {
 
       <main className="min-h-screen w-full flex items-center justify-center px-4 py-12 font-sans">
         <div className="w-full max-w-7xl flex flex-col md:flex-row gap-10">
-          <section className="md:w-[70%] w-full">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#263C61] mb-12 text-left tracking-tight drop-shadow-md">
+          <section className="w-full md:w-3/4">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#263C61] mb-12 text-center md:text-left tracking-tight">
               Zeno AI FastAPI Deployment Steps
             </h1>
-            <ol className="relative border-l-[5px] border-[#263C61]/30 ml-5 space-y-0">
+            <ol className="relative border-l-[3px] sm:border-l-[5px] border-[#263C61]/30 ml-12 sm:ml-14 space-y-6 md:space-y-8">
               {steps.map((step, idx) => (
-                <li key={idx} className="mb-12 last:mb-0 flex relative z-0">
-                  <span className="absolute -left-[68px] top-4 flex flex-col items-center z-10 select-none">
+                <li key={idx} className="flex relative z-0">
+                  <span className="absolute -left-10 sm:-left-12 top-4 flex flex-col items-center z-10 select-none">
                     <span
-                      className={clsx(
-                        "w-10 h-10 flex items-center justify-center text-[#263C61] bg-white rounded-full shadow border-2 border-[#263C61] text-xl font-extrabold text-center tracking-wider"
-                      )}
-                      style={{
-                        fontFamily: "Inter, sans-serif",
-                      }}
+                      className="w-8 sm:w-10 h-8 sm:h-10 flex items-center justify-center text-[#263C61] bg-white rounded-full shadow border-2 border-[#263C61] text-base sm:text-xl font-extrabold"
                     >
                       {idx + 1}
                     </span>
                     {idx !== steps.length - 1 && (
-                      <span className="w-1 h-full bg-gradient-to-b from-[#263C61]/30 via-[#CAD3E4] to-transparent mt-1" />
+                      <span className="w-0.5 h-full bg-gradient-to-b from-[#263C61]/30 via-[#CAD3E4] to-transparent mt-1" />
                     )}
                   </span>
                   <div
-                    className={clsx(
-                      "ml-10 flex-1 relative group/card transition-all duration-300",
-                      "bg-white/90 rounded-2xl shadow-xl border border-[#CAD3E4] overflow-hidden",
-                      "cursor-pointer text-left"
-                    )}
+                    className="ml-12 sm:ml-14 flex-1 bg-white/90 rounded-2xl shadow-xl border border-[#CAD3E4] px-4 sm:px-6 py-4 sm:py-6 cursor-pointer text-left"
                     tabIndex={0}
                     onMouseEnter={() => setOpenIdx(idx)}
                     onMouseLeave={() => setOpenIdx(null)}
                     onFocus={() => setOpenIdx(idx)}
                     onBlur={() => setOpenIdx(null)}
                   >
-                    <div className="flex flex-col md:flex-row md:items-center px-8 pt-6 pb-2">
-                      <h2 className="text-lg md:text-xl font-bold text-[#263C61] tracking-tight text-left">
-                        {step.title}
-                      </h2>
-                    </div>
-                    <div className="px-8 pb-6 pt-0">
-                      <p className="text-[#263C61] text-base mb-5 leading-relaxed text-left">
-                        {step.desc}
-                      </p>
-                      <div
-                        className={clsx(
-                          "grid transition-all duration-300",
-                          openIdx === idx
-                            ? "max-h-[350px] opacity-100 scale-100 mt-0 mb-0"
-                            : "max-h-0 opacity-0 scale-95 -mt-6 mb-0 pointer-events-none"
-                        )}
-                        style={{
-                          transitionProperty:
-                            "max-height, opacity, transform, margin",
-                        }}
-                      >
-                        <pre className="rounded-xl bg-[#263C61] text-[#CAD3E4] text-sm md:text-base py-4 px-6 overflow-x-auto font-mono whitespace-pre-wrap border border-[#CAD3E4] shadow-xl transition-opacity duration-1000">
-                          {step.code}
-                        </pre>
-                      </div>
+                    <h2 className="text-base sm:text-xl font-bold text-[#263C61] mb-2">
+                      {step.title}
+                    </h2>
+                    <p className="text-[#263C61] text-sm sm:text-base mb-4 leading-relaxed">
+                      {step.desc}
+                    </p>
+                    <div
+                      className={clsx(
+                        "grid transition-all duration-300",
+                        openIdx === idx
+                          ? "max-h-[350px] opacity-100 scale-100 mt-0 mb-0"
+                          : "max-h-0 opacity-0 scale-95 -mt-6 mb-0 pointer-events-none"
+                      )}
+                    >
+                      <pre className="rounded-xl bg-[#263C61] text-[#CAD3E4] text-xs sm:text-sm py-3 sm:py-4 px-4 sm:px-6 overflow-x-auto font-mono whitespace-pre-wrap border border-[#CAD3E4] shadow-xl">
+                        {step.code}
+                      </pre>
                     </div>
                   </div>
                 </li>
               ))}
             </ol>
           </section>
-          <aside className="md:w-[30%] w-full md:block flex-shrink-0">
-            <div className="sticky top-10">
-              <img
-                src="/pics/robot.png"
-                alt="Zeno AI Illustration"
-                className="w-full max-w-xs mx-auto mt-60 rounded-2xl shadow-lg border-[#263C61]"
-                style={{ background: "#fff" }}
-              />
-            </div>
+          <aside className="w-full md:w-1/4 flex-shrink-0 md:sticky md:top-40 self-start">
+            <img
+              src="/pics/robot.png"
+              alt="Zeno AI Illustration"
+              className="w-full max-w-[280px] mx-auto rounded-2xl shadow-lg border-[#263C61]"
+              style={{ background: "#fff" }}
+            />
           </aside>
         </div>
       </main>
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 md:mt-20">
-        <section className="w-full py-12 md:py-16 bg-[#D3D7DF]">
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
+        <section className="w-full py-12 sm:py-16 bg-[#D3D7DF]">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#232C3B]">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-[#232C3B]">
               Model Exposure
             </h1>
-            <p className="mb-10 text-base md:text-lg text-[#232C3B] max-w-6xl">
+            <p className="mb-8 text-sm sm:text-base text-[#232C3B] max-w-3xl">
               The Zeno AI model is exposed via a RESTful API built with FastAPI,
               providing a scalable and well-documented interface for querying
               agricultural trade analysis. The API is served using Uvicorn as
@@ -794,22 +806,22 @@ export default function RoutingCardsPage() {
               system health checks.
             </p>
 
-            <h2 className="text-xl md:text-2xl font-bold mb-4 text-[#232C3B]">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#232C3B]">
               Example Requests & Responses
             </h2>
-            <h3 className=" text-3xl font-semibold mb-2 text-[#232C3B]">
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-[#232C3B]">
               1. Query Endpoint
             </h3>
-            <p className=" text-[18px] mb-2 text-[#232C3B]">
+            <p className="text-sm sm:text-base mb-2 text-[#232C3B]">
               Purpose: Processes natural language queries for agricultural trade
               analysis (e.g., scenario, forecasting, comparative, or knowledge
               base queries).
             </p>
 
-            <div className=" text-[20px] flex flex-col md:flex-row gap-8 items-start mb-2 justify-center">
-              <div className="flex-1 mb-4 md:mb-0 max-w-lg">
+            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 items-start mb-6 justify-center">
+              <div className="flex-1 w-full">
                 <div className="font-bold mb-1 text-[#232C3B]">Request</div>
-                <pre className=" text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs whitespace-pre-wrap font-mono">
+                <pre className="bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap font-mono overflow-x-auto">
                   {`POST /query HTTP/1.1
 Host: localhost:8000
 Content-Type: application/json
@@ -819,9 +831,9 @@ Content-Type: application/json
 }`}
                 </pre>
               </div>
-              <div className="flex-1 max-w-lg">
+              <div className="flex-1 w-full">
                 <div className="font-bold mb-1 text-[#232C3B]">Response</div>
-                <pre className="text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs whitespace-pre-wrap font-mono">
+                <pre className="bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 sm:p-4 text-xs sm:text-sm whitespace-pre-wrap font-mono overflow-x-auto">
                   {`{
   "response": "A 20% price drop for maize in Kenya would reduce average prices from 850/kg to 680/kg over the next 6 months, impacting national supply. This could decrease farmer revenue but may potentially lift the reduced market value, trigger export flows and input inflation.",
   "graph_path": "zeno_agent/scenario_graphs/maize_drop20.png",
@@ -830,9 +842,9 @@ Content-Type: application/json
                 </pre>
               </div>
             </div>
-            <div className="mb-6 text-sm text-[#232C3B]">
-              <div className=" text-2xl font-semibold">Notes:</div>
-              <ul className=" text-[18px] list-disc pl-5">
+            <div className="mb-6 text-sm sm:text-base text-[#232C3B]">
+              <div className="text-lg sm:text-xl font-semibold">Notes:</div>
+              <ul className="list-disc pl-5 mt-2">
                 <li>The response field contains the textual analysis.</li>
                 <li>
                   The graph_path points to a generated visualization in{" "}
@@ -846,27 +858,23 @@ Content-Type: application/json
               </ul>
             </div>
 
-            <h3 className="text-3xl font-semibold mb-2 text-[#232C3B]">
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-[#232C3B]">
               2. Health Check Endpoint
             </h3>
-            <p className="text-[18px] mb-2 text-[#232C3B]">
+            <p className="text-sm sm:text-base mb-2 text-[#232C3B]">
               Purpose: Verifies the API&apos;s operational status.
             </p>
-            <div className="flex flex-col md:flex-row gap-8 items-start mb-2">
-              <div className="flex-1 mb-4 md:mb-0">
-                <div className=" text-xl font-bold mb-1 text-[#232C3B]">
-                  Request
-                </div>
-                <pre className="text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs overflow-x-auto font-mono">
+            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 items-start mb-2">
+              <div className="flex-1 w-full">
+                <div className="font-bold mb-1 text-[#232C3B]">Request</div>
+                <pre className="bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 sm:p-4 text-xs sm:text-sm overflow-x-auto font-mono">
                   {`GET /healthz HTTP/1.1
 Host: localhost:8000`}
                 </pre>
               </div>
-              <div className="flex-1">
-                <div className=" text-xl font-bold mb-1 text-[#232C3B]">
-                  Response
-                </div>
-                <pre className="text-[18px] bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 text-xs overflow-x-auto font-mono">
+              <div className="flex-1 w-full">
+                <div className="font-bold mb-1 text-[#232C3B]">Response</div>
+                <pre className="bg-[#232C3B] text-[#D3D7DF] rounded-md p-3 sm:p-4 text-xs sm:text-sm overflow-x-auto font-mono">
                   {`{
   "status": "ok"
 }`}
@@ -877,7 +885,6 @@ Host: localhost:8000`}
         </section>
       </div>
 
-      
       <Footer />
     </main>
   );

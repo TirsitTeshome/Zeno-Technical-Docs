@@ -613,8 +613,7 @@ export default function RoutingCardsPage() {
     ├── root_agent.yaml
     ├── scenario.py`}
                 </pre>
-                <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
-                  {`   ├── prompts/
+ <pre className="bg-[#232C3B] text-[#D3D7DF]  text-[11px] sm:text-xs md:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono whitespace-pre-wrap break-words w-full sm:max-w-[260px] md:max-w-[320px] shadow-xl">                  {`   ├── prompts/
     │   ├── missing_data.txt
     │   ├── root_agent.txt
     │   ├── router_prompt.txt

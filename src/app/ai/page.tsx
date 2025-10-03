@@ -301,6 +301,207 @@ export default function RoutingCardsPage() {
           scenarios, and surfacing insights that would be difficult to uncover
           manually.
         </p>
+                  <section className="w-full  py-20 flex flex-col items-center font-sans">
+      <div className="w-full max-w-6xl mx-auto px-2 md:px-8">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#232C3B] mb-16 tracking-tight text-center drop-shadow-sm">
+          Data Pipeline 
+        </h2>
+        <div className="relative">
+          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 bg-[#232C3B]/10 z-0 rounded-full" />
+          <div className="flex flex-col gap-0">
+            {pipelineSteps.map((step, idx) => {
+              const isLeft = idx % 2 === 0;
+              return (
+                <div
+                  key={idx}
+                  className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
+                >
+                  <div className="md:hidden flex w-full justify-center relative pb-10">
+                    <div className="flex flex-col items-center w-full">
+                      <div className="bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-12 h-12 flex items-center justify-center mb-2 text-2xl">
+                        {step.icon}
+                      </div>
+                      <div className="bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-6 py-6 w-full text-left transition-all min-h-[180px]">
+                        <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                          STEP {step.step}
+                        </div>
+                        <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                          {step.title}
+                        </div>
+                        <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                          {step.description}
+                        </div>
+                        {step.details}
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {step.frameworks.map((fw, i) => (
+                            <span
+                              key={i}
+                              className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                            >
+                              {fw.icon}
+                              {fw.name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hidden md:flex w-full items-center">
+                    {isLeft && (
+                      <>
+                        <div className="w-1/2 flex justify-end relative">
+                          <div className="absolute right-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
+                          <div
+                            className="absolute right-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
+                          >
+                            {step.icon}
+                          </div>
+                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-right ml-auto mr-[48px] relative">
+                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                              STEP {step.step}
+                            </div>
+                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                              {step.title}
+                            </div>
+                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                              {step.description}
+                            </div>
+                            {step.details}
+                            <div className="flex flex-wrap gap-2 mt-2 justify-end">
+                              {step.frameworks.map((fw, i) => (
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                                >
+                                  {fw.icon}
+                                  {fw.name}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="w-1/2" />
+                      </>
+                    )}
+                    {!isLeft && (
+                      <>
+                        <div className="w-1/2" />
+                        <div className="w-1/2 flex justify-start relative">
+                          <div className="absolute left-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
+                          <div
+                            className="absolute left-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
+                          >
+                            {step.icon}
+                          </div>
+                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-left mr-auto ml-[48px] relative">
+                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
+                              STEP {step.step}
+                            </div>
+                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
+                              {step.title}
+                            </div>
+                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
+                              {step.description}
+                            </div>
+                            {step.details}
+                            <div className="flex flex-wrap gap-2 mt-2 justify-start">
+                              {step.frameworks.map((fw, i) => (
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
+                                >
+                                  {fw.icon}
+                                  {fw.name}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+        <div className="mt-10 flex items-center justify-center px-4">
+              <div className="max-w-7xl w-full rounded-lg p-8 md:p-16 flex flex-col md:flex-row gap-8">
+                <div className="flex-1 flex flex-col justify-center">
+                  <h1 className="md:text-4xl font-bold text-[#232C3B] mb-12 text-center md:text-left">
+                    Economic Models used in Zeno AI
+                  </h1>
+                  <div className="space-y-8">
+                    <div>
+                      <h2 className="font-semibold text-2xl text-[#232C3B]">
+                        Trade Forecasting Models
+                      </h2>
+                      <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal space-y-2">
+                        <li>
+                          <span className="text-xl font-medium">ARIMA:</span>{" "}
+                          Classical time-series model for short- and medium-term
+                          forecasting using historical export/import and price
+                          data.
+                        </li>
+                        <li>
+                          <span className="text-xl font-medium">Prophet:</span>{" "}
+                          Handles complex seasonality and trend changes in trade
+                          data for robust forecasting.
+                        </li>
+                        <li>
+                          <span className="text-xl font-medium">XGBoost:</span>{" "}
+                          Machine learning model capturing nonlinear
+                          relationships by combining decision trees for accurate
+                          trade volume prediction under variable conditions
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h2 className="font-semibold text-2xl text-[#232C3B]">
+                        Scenario Simulation Models
+                      </h2>
+                      <ul className="list-disc ml-5 mt-2 text-black text-base font-normal">
+                        <li>
+                          <span className="font-medium">
+                            Computable General Equilibrium (CGE) Models:
+                          </span>{" "}
+                          Economy-wide models using social accounting matrices
+                          and policy variables to simulate impacts of shocks
+                          like tariffs and drought on GDP, welfare, and sector
+                          outputs.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col items-center justify-between">
+                  <div className="w-full flex justify-center items-start mb-8 md:mb-12">
+                    <img
+                      src="/pics/chartt.png"
+                      alt="Economic Models Chart"
+                      className="w-[420px] h-[260px] object-contain"
+                    />
+                  </div>
+                  <div className="w-full">
+                    <h2 className="font-semibold text-2xl text-[#232C3B]">
+                      Impact Analysis Models
+                    </h2>
+                    <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal">
+                      <li>
+                        <span className="font-medium text-xl text-[#232C3B]">
+                          Structural Econometric Models:
+                        </span>{" "}
+                        Estimate elasticities and policy effects on trade
+                        volumes and assess ripple economic impacts based on
+                        scenario outputs.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         <h1 className="text-3xl md:text-4xl font-bold text-[#232C3B] mb-10 mt-10">
           Tech Stack
@@ -494,6 +695,85 @@ export default function RoutingCardsPage() {
         </div>
       </div>
 
+      <main className="min-h-screen w-full flex items-center justify-center px-4 py-12 font-sans">
+        <div className="w-full max-w-7xl flex flex-col md:flex-row gap-10">
+          <section className="md:w-[70%] w-full">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#263C61] mb-12 text-left tracking-tight drop-shadow-md">
+              Zeno AI FastAPI Deployment Steps
+            </h1>
+            <ol className="relative border-l-[5px] border-[#263C61]/30 ml-5 space-y-0">
+              {steps.map((step, idx) => (
+                <li key={idx} className="mb-12 last:mb-0 flex relative z-0">
+                  <span className="absolute -left-[68px] top-4 flex flex-col items-center z-10 select-none">
+                    <span
+                      className={clsx(
+                        "w-10 h-10 flex items-center justify-center text-[#263C61] bg-white rounded-full shadow border-2 border-[#263C61] text-xl font-extrabold text-center tracking-wider"
+                      )}
+                      style={{
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {idx + 1}
+                    </span>
+                    {idx !== steps.length - 1 && (
+                      <span className="w-1 h-full bg-gradient-to-b from-[#263C61]/30 via-[#CAD3E4] to-transparent mt-1" />
+                    )}
+                  </span>
+                  <div
+                    className={clsx(
+                      "ml-10 flex-1 relative group/card transition-all duration-300",
+                      "bg-white/90 rounded-2xl shadow-xl border border-[#CAD3E4] overflow-hidden",
+                      "cursor-pointer text-left"
+                    )}
+                    tabIndex={0}
+                    onMouseEnter={() => setOpenIdx(idx)}
+                    onMouseLeave={() => setOpenIdx(null)}
+                    onFocus={() => setOpenIdx(idx)}
+                    onBlur={() => setOpenIdx(null)}
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center px-8 pt-6 pb-2">
+                      <h2 className="text-lg md:text-xl font-bold text-[#263C61] tracking-tight text-left">
+                        {step.title}
+                      </h2>
+                    </div>
+                    <div className="px-8 pb-6 pt-0">
+                      <p className="text-[#263C61] text-base mb-5 leading-relaxed text-left">
+                        {step.desc}
+                      </p>
+                      <div
+                        className={clsx(
+                          "grid transition-all duration-300",
+                          openIdx === idx
+                            ? "max-h-[350px] opacity-100 scale-100 mt-0 mb-0"
+                            : "max-h-0 opacity-0 scale-95 -mt-6 mb-0 pointer-events-none"
+                        )}
+                        style={{
+                          transitionProperty:
+                            "max-height, opacity, transform, margin",
+                        }}
+                      >
+                        <pre className="rounded-xl bg-[#263C61] text-[#CAD3E4] text-sm md:text-base py-4 px-6 overflow-x-auto font-mono whitespace-pre-wrap border border-[#CAD3E4] shadow-xl transition-opacity duration-1000">
+                          {step.code}
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <aside className="md:w-[30%] w-full md:block flex-shrink-0">
+            <div className="sticky top-10">
+              <img
+                src="/pics/robot.png"
+                alt="Zeno AI Illustration"
+                className="w-full max-w-xs mx-auto mt-60 rounded-2xl shadow-lg border-[#263C61]"
+                style={{ background: "#fff" }}
+              />
+            </div>
+          </aside>
+        </div>
+      </main>
       <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 md:mt-20">
         <section className="w-full py-12 md:py-16 bg-[#D3D7DF]">
           <div className="max-w-7xl mx-auto">
@@ -593,290 +873,10 @@ Host: localhost:8000`}
                 </pre>
               </div>
             </div>
-
-            <div className="mt-10 flex items-center justify-center px-4">
-              <div className="max-w-7xl w-full rounded-lg p-8 md:p-16 flex flex-col md:flex-row gap-8">
-                <div className="flex-1 flex flex-col justify-center">
-                  <h1 className="md:text-4xl font-bold text-[#232C3B] mb-12 text-center md:text-left">
-                    Economic Models used in Zeno AI
-                  </h1>
-                  <div className="space-y-8">
-                    <div>
-                      <h2 className="font-semibold text-2xl text-[#232C3B]">
-                        Trade Forecasting Models
-                      </h2>
-                      <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal space-y-2">
-                        <li>
-                          <span className="text-xl font-medium">ARIMA:</span>{" "}
-                          Classical time-series model for short- and medium-term
-                          forecasting using historical export/import and price
-                          data.
-                        </li>
-                        <li>
-                          <span className="text-xl font-medium">Prophet:</span>{" "}
-                          Handles complex seasonality and trend changes in trade
-                          data for robust forecasting.
-                        </li>
-                        <li>
-                          <span className="text-xl font-medium">XGBoost:</span>{" "}
-                          Machine learning model capturing nonlinear
-                          relationships by combining decision trees for accurate
-                          trade volume prediction under variable conditions
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h2 className="font-semibold text-2xl text-[#232C3B]">
-                        Scenario Simulation Models
-                      </h2>
-                      <ul className="list-disc ml-5 mt-2 text-black text-base font-normal">
-                        <li>
-                          <span className="font-medium">
-                            Computable General Equilibrium (CGE) Models:
-                          </span>{" "}
-                          Economy-wide models using social accounting matrices
-                          and policy variables to simulate impacts of shocks
-                          like tariffs and drought on GDP, welfare, and sector
-                          outputs.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex-1 flex flex-col items-center justify-between">
-                  <div className="w-full flex justify-center items-start mb-8 md:mb-12">
-                    <img
-                      src="/pics/chartt.png"
-                      alt="Economic Models Chart"
-                      className="w-[420px] h-[260px] object-contain"
-                    />
-                  </div>
-                  <div className="w-full">
-                    <h2 className="font-semibold text-2xl text-[#232C3B]">
-                      Impact Analysis Models
-                    </h2>
-                    <ul className="list-disc ml-5 mt-2 text-[#232C3B] text-base font-normal">
-                      <li>
-                        <span className="font-medium text-xl text-[#232C3B]">
-                          Structural Econometric Models:
-                        </span>{" "}
-                        Estimate elasticities and policy effects on trade
-                        volumes and assess ripple economic impacts based on
-                        scenario outputs.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       </div>
-          <section className="w-full  py-20 flex flex-col items-center font-sans">
-      <div className="w-full max-w-6xl mx-auto px-2 md:px-8">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-[#232C3B] mb-16 tracking-tight text-center drop-shadow-sm">
-          Data Pipeline 
-        </h2>
-        <div className="relative">
-          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 bg-[#232C3B]/10 z-0 rounded-full" />
-          <div className="flex flex-col gap-0">
-            {pipelineSteps.map((step, idx) => {
-              const isLeft = idx % 2 === 0;
-              return (
-                <div
-                  key={idx}
-                  className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
-                >
-                  <div className="md:hidden flex w-full justify-center relative pb-10">
-                    <div className="flex flex-col items-center w-full">
-                      <div className="bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-12 h-12 flex items-center justify-center mb-2 text-2xl">
-                        {step.icon}
-                      </div>
-                      <div className="bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-6 py-6 w-full text-left transition-all min-h-[180px]">
-                        <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
-                          STEP {step.step}
-                        </div>
-                        <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
-                          {step.title}
-                        </div>
-                        <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
-                          {step.description}
-                        </div>
-                        {step.details}
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {step.frameworks.map((fw, i) => (
-                            <span
-                              key={i}
-                              className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
-                            >
-                              {fw.icon}
-                              {fw.name}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:flex w-full items-center">
-                    {isLeft && (
-                      <>
-                        <div className="w-1/2 flex justify-end relative">
-                          <div className="absolute right-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
-                          <div
-                            className="absolute right-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
-                          >
-                            {step.icon}
-                          </div>
-                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-right ml-auto mr-[48px] relative">
-                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
-                              STEP {step.step}
-                            </div>
-                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
-                              {step.title}
-                            </div>
-                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
-                              {step.description}
-                            </div>
-                            {step.details}
-                            <div className="flex flex-wrap gap-2 mt-2 justify-end">
-                              {step.frameworks.map((fw, i) => (
-                                <span
-                                  key={i}
-                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
-                                >
-                                  {fw.icon}
-                                  {fw.name}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-1/2" />
-                      </>
-                    )}
-                    {!isLeft && (
-                      <>
-                        <div className="w-1/2" />
-                        <div className="w-1/2 flex justify-start relative">
-                          <div className="absolute left-0 top-1/2 w-[60px] h-0 border-t-2 border-dotted border-[#05192F] z-10" />
-                          <div
-                            className="absolute left-[-37px] top-1/2 -translate-y-1/2 z-20 bg-[#05192F] text-white border-4 border-white shadow-xl rounded-full w-14 h-14 flex items-center justify-center text-2xl"
-                          >
-                            {step.icon}
-                          </div>
-                          <div className="max-w-[500px] w-full bg-white rounded-2xl shadow-xl border border-[#232C3B]/10 px-8 py-8 text-left mr-auto ml-[48px] relative">
-                            <div className="uppercase text-xs tracking-[.14em] text-[#05192F] font-bold mb-1">
-                              STEP {step.step}
-                            </div>
-                            <div className="text-[#232C3B] font-extrabold text-2xl leading-tight mb-2">
-                              {step.title}
-                            </div>
-                            <div className="text-[#232C3B] opacity-90 text-base leading-snug font-medium mb-2">
-                              {step.description}
-                            </div>
-                            {step.details}
-                            <div className="flex flex-wrap gap-2 mt-2 justify-start">
-                              {step.frameworks.map((fw, i) => (
-                                <span
-                                  key={i}
-                                  className="inline-flex items-center gap-1 bg-[#F5F4FF] border border-[#05192F] text-[#05192F] px-3 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-[#ede9fe]"
-                                >
-                                  {fw.icon}
-                                  {fw.name}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-      <main className="min-h-screen w-full flex items-center justify-center px-4 py-12 font-sans">
-        <div className="w-full max-w-7xl flex flex-col md:flex-row gap-10">
-          <section className="md:w-[70%] w-full">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#263C61] mb-12 text-left tracking-tight drop-shadow-md">
-              Zeno AI FastAPI Deployment Steps
-            </h1>
-            <ol className="relative border-l-[5px] border-[#263C61]/30 ml-5 space-y-0">
-              {steps.map((step, idx) => (
-                <li key={idx} className="mb-12 last:mb-0 flex relative z-0">
-                  <span className="absolute -left-[68px] top-4 flex flex-col items-center z-10 select-none">
-                    <span
-                      className={clsx(
-                        "w-10 h-10 flex items-center justify-center text-[#263C61] bg-white rounded-full shadow border-2 border-[#263C61] text-xl font-extrabold text-center tracking-wider"
-                      )}
-                      style={{
-                        fontFamily: "Inter, sans-serif",
-                      }}
-                    >
-                      {idx + 1}
-                    </span>
-                    {idx !== steps.length - 1 && (
-                      <span className="w-1 h-full bg-gradient-to-b from-[#263C61]/30 via-[#CAD3E4] to-transparent mt-1" />
-                    )}
-                  </span>
-                  <div
-                    className={clsx(
-                      "ml-10 flex-1 relative group/card transition-all duration-300",
-                      "bg-white/90 rounded-2xl shadow-xl border border-[#CAD3E4] overflow-hidden",
-                      "cursor-pointer text-left"
-                    )}
-                    tabIndex={0}
-                    onMouseEnter={() => setOpenIdx(idx)}
-                    onMouseLeave={() => setOpenIdx(null)}
-                    onFocus={() => setOpenIdx(idx)}
-                    onBlur={() => setOpenIdx(null)}
-                  >
-                    <div className="flex flex-col md:flex-row md:items-center px-8 pt-6 pb-2">
-                      <h2 className="text-lg md:text-xl font-bold text-[#263C61] tracking-tight text-left">
-                        {step.title}
-                      </h2>
-                    </div>
-                    <div className="px-8 pb-6 pt-0">
-                      <p className="text-[#263C61] text-base mb-5 leading-relaxed text-left">
-                        {step.desc}
-                      </p>
-                      <div
-                        className={clsx(
-                          "grid transition-all duration-300",
-                          openIdx === idx
-                            ? "max-h-[350px] opacity-100 scale-100 mt-0 mb-0"
-                            : "max-h-0 opacity-0 scale-95 -mt-6 mb-0 pointer-events-none"
-                        )}
-                        style={{
-                          transitionProperty:
-                            "max-height, opacity, transform, margin",
-                        }}
-                      >
-                        <pre className="rounded-xl bg-[#263C61] text-[#CAD3E4] text-sm md:text-base py-4 px-6 overflow-x-auto font-mono whitespace-pre-wrap border border-[#CAD3E4] shadow-xl transition-opacity duration-1000">
-                          {step.code}
-                        </pre>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-          <aside className="md:w-[30%] w-full md:block flex-shrink-0">
-            <div className="sticky top-10">
-              <img
-                src="/pics/data.png"
-                alt="Zeno AI Illustration"
-                className="w-full max-w-xs mx-auto mt-60 rounded-2xl shadow-lg border-[#263C61]"
-                style={{ background: "#fff" }}
-              />
-            </div>
-          </aside>
-        </div>
-      </main>
+
       
       <Footer />
     </main>

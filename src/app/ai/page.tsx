@@ -468,7 +468,7 @@ export default function RoutingCardsPage() {
                   Applications: Policy evaluation, trade agreement analysis, and resilience planning for agricultural markets.
                 </p>
               </div>
-                            <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-1">
+              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-1">
                 <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                   1
                 </div>
@@ -613,7 +613,7 @@ export default function RoutingCardsPage() {
     ├── root_agent.yaml
     ├── scenario.py`}
                 </pre>
- <pre className="bg-[#232C3B] text-[#D3D7DF]  text-[11px] sm:text-xs md:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono whitespace-pre-wrap break-words w-full sm:max-w-[260px] md:max-w-[320px] shadow-xl">                  {`   ├── prompts/
+                <pre className="bg-[#232C3B] text-[#D3D7DF]  text-[11px] sm:text-xs md:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono whitespace-pre-wrap break-words w-full sm:max-w-[260px] md:max-w-[320px] shadow-xl">                  {`   ├── prompts/
     │   ├── missing_data.txt
     │   ├── root_agent.txt
     │   ├── router_prompt.txt

@@ -134,7 +134,7 @@ export default function Frontend() {
             <div className="flex-1 w-full flex justify-center">
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
                 <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
-{`src/app/
+                  {`src/app/
 ├── analytics/
 │   ├── components/
 │   ├── page.test.tsx
@@ -160,7 +160,7 @@ export default function Frontend() {
 ├── profile/`}
                 </pre>
                 <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-hidden w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
-{`│   ├── ProfileMenu/
+                  {`│   ├── ProfileMenu/
 │   └── Sidebar/
 ├── sharedComponents/
 │   ├── Background/
@@ -437,18 +437,30 @@ export default function Frontend() {
         </div>
       </div>
 
-      <div className="w-full max-w-8xl flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-5 px-2 md:px-6 lg:px-8 bg-[#D3D7DF]">
-        <div className="flex-1">
-          <div className="relative bg-[#D3D7DF] md:py-10 lg:py-16 flex justify-center">
-            <div className="flex flex-col sm:flex-row max-w-5xl w-full">
-              <div className="relative flex flex-col items-center w-full sm:w-2/5 min-w-[180px] sm:min-w-[230px] max-w-[300px] mx-auto sm:mx-0">
-                <svg
-                  width="100%"
-                  height="180"
-                  viewBox="0 0 180 180"
-                  className="absolute left-1/2 -translate-x-1/2 top-10 z-10 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px]"
-                  preserveAspectRatio="xMidYMid meet"
-                >
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 my-16">
+        <div className="flex flex-col items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(320px,1fr)_auto_minmax(320px,1fr)] gap-8 lg:gap-12 w-full items-start justify-items-stretch">
+            <div className="flex flex-col gap-3 w-full">
+              {leftSteps.map((step, idx) => (
+                <div key={idx} className="flex items-start">
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#becad6] font-bold text-xl sm:text-2xl border-2 border-white shadow-md">
+                      {step.number}
+                    </div>
+                  </div>
+                  <div
+                    className={`flex-1 ml-4 sm:ml-6 rounded-[32px] ${step.color} shadow-lg px-4 sm:px-6 py-4 border-2 border-[#cccccc]`}
+                  >
+                    <h3 className="font-bold text-white text-base sm:text-lg mb-1">{step.title}</h3>
+                    <p className="text-white text-xs sm:text-sm opacity-80 leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col items-center justify-center py-6 lg:py-0 ">
+              <div className="w-48 h-48 flex items-center justify-center">
+                <svg viewBox="0 0 180 180" className="w-full h-full">
                   <path
                     d="M150 90a60 60 0 1 0-120 0"
                     stroke="#36496E"
@@ -457,73 +469,31 @@ export default function Frontend() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <div className="relative mt-[150px] sm:mt-[140px] md:mt-[150px] lg:mt-[160px] text-center">
-                  <div className="font-bold text-lg sm:text-xl md:text-2xl text-[#232C3B]">
-                    FRONTEND <span className="font-normal [#232323]">DEPLOYMENT</span>
+              </div>
+              <h2 className="font-bold text-[#232C3B] text-lg sm:text-xl text-center mt-4 px-2">
+                FRONTEND <span className="font-normal text-[#36496E]">DEPLOYMENT</span>
+              </h2>
+              <p className="text-sm sm:text-base text-[#36496E] mt-2 text-center max-w-[260px] px-2">
+                The front-end application was deployed using Vercel. The project was first prepared and built locally, and the GitHub repository was then connected to Vercel. After changes were pushed, the application was automatically built and deployed by Vercel.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 w-full">
+              {rightSteps.map((step, idx) => (
+                <div key={idx} className="flex flex-row-reverse items-start">
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#becad6] font-bold text-xl sm:text-2xl border-2 border-white shadow-md">
+                      {step.number}
+                    </div>
                   </div>
-                  <div className="text-sm sm:text-base md:text-lg text-gray-500 max-w-[240px] mt-2 leading-snug mx-auto">
-                    The front-end application was deployed using Vercel. The project was first prepared and built locally, and the GitHub repository was then connected to Vercel. After changes were pushed, the application was automatically built and deployed by Vercel.
+                  <div
+                    className={`flex-1 mr-4 sm:mr-6 rounded-[32px] ${step.color} shadow-lg px-4 sm:px-6 py-4 border-2 border-[#cccccc] text-right`}
+                  >
+                    <h3 className="font-bold text-white text-base sm:text-lg mb-1">{step.title}</h3>
+                    <p className="text-white text-xs sm:text-sm opacity-80 leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-col flex-1 pl-0 sm:pl-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
-                {leftSteps.map((step, idx) => (
-                  <div key={idx} className="flex flex-row items-center">
-                    <div className="flex flex-col items-center">
-                      <div
-                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#495a6e] font-bold text-xl sm:text-2xl border-4 border-white shadow-md"
-                        style={{ marginRight: "-20px", zIndex: 10 }}
-                      >
-                        {step.number}
-                      </div>
-                    </div>
-                    <div
-                      className={`flex-1 ml-4 sm:ml-8 rounded-[35px] ${step.color} shadow-lg px-4 sm:px-6 md:px-8 py-4 flex items-center gap-4 min-h-[88px]`}
-                      style={{
-                        maxWidth: 500,
-                        border: "2px solid #cccccc"
-                      }}
-                    >
-                      <div>
-                        <div className="font-bold text-white text-sm sm:text-base mb-1">{step.title}</div>
-                        <div className="text-white text-xs opacity-80 leading-snug">{step.desc}</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex-1">
-          <div className="relative bg-[#D3D7DF] py-8 md:py-10 lg:py-16 flex justify-center">
-            <div className="flex flex-col sm:flex-row-reverse max-w-5xl w-full">
-              <div className="flex flex-col flex-1 pr-0 sm:pr-4 gap-4 sm:gap-6 md:gap-8 relative z-20 mt-8 sm:mt-0">
-                {rightSteps.map((step, idx) => (
-                  <div key={idx} className="flex flex-row-reverse items-center">
-                    <div className="flex flex-col items-center">
-                      <div
-                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-[#495a6e] font-bold text-xl sm:text-2xl border-4 border-white shadow-md"
-                        style={{ marginLeft: "-20px", zIndex: 10 }}
-                      >
-                        {step.number}
-                      </div>
-                    </div>
-                    <div
-                      className={`flex-1 mr-4 sm:mr-8 rounded-[35px] ${step.color} shadow-lg px-4 sm:px-6 md:px-8 py-4 flex flex-row-reverse items-center gap-4 min-h-[88px]`}
-                      style={{
-                        maxWidth: 500,
-                        border: "2px solid #cccccc"
-                      }}
-                    >
-                      <div className="text-right w-full">
-                        <div className="font-bold text-white text-sm sm:text-base mb-1">{step.title}</div>
-                        <div className="text-white text-xs opacity-80 leading-snug">{step.desc}</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>

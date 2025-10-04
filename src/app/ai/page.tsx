@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import DocsNavBar from "../shared-components/NavBar";
 import React from "react";
@@ -266,7 +265,6 @@ venv/
 
 export default function RoutingCardsPage() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
-
   return (
     <main className="min-h-screen bg-[#D3D7DF] pt-32">
       <DocsNavBar />
@@ -291,6 +289,7 @@ export default function RoutingCardsPage() {
           scenarios, and surfacing insights that would be difficult to uncover
           manually.
         </p>
+
         <section className="w-full py-20 flex flex-col items-center font-sans">
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#232C3B] mb-16 tracking-tight text-center">
@@ -301,10 +300,15 @@ export default function RoutingCardsPage() {
               <div className="flex flex-col gap-0">
                 {pipelineSteps.map((step, idx) => {
                   const isLeft = idx % 2 === 0;
+                  const delay = (idx + 1) * 150;
                   return (
                     <div
                       key={idx}
-                      className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"}`}
+                      className={`relative flex min-h-[260px] md:mb-0 md:items-center ${isLeft ? "md:justify-end" : "md:justify-start"} opacity-0 animate-fade-in-slide`}
+                      style={{
+                        animationDelay: `${delay}ms`,
+                        animationFillMode: 'forwards',
+                      }}
                     >
                       <div className="md:hidden flex w-full justify-center relative pb-10">
                         <div className="flex flex-col items-center w-full">
@@ -413,125 +417,111 @@ export default function RoutingCardsPage() {
             </div>
           </div>
         </section>
-        <style jsx>{`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-          }
-          .delay-1 {
-            animation-delay: 0.2s;
-          }
-          .delay-2 {
-            animation-delay: 0.4s;
-          }
-          .delay-3 {
-            animation-delay: 0.6s;
-          }
-        `}</style>
+
         <div className="mt-10 px-4">
           <div className="max-w-7xl mx-auto rounded-lg p-6 sm:p-8">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-[#232C3B] mb-8 text-center">
               Economic Models used in Zeno AI
             </h1>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-
-              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-2">
-                <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
-                  2
-                </div>
-                <FaProjectDiagram className="text-3xl mb-4" />
-                <h2 className="text-xl sm:text-2xl font-semibold mb-4">
-                  Scenario Simulation
-                </h2>
-                <ul className="space-y-4 text-sm sm:text-base">
-                  <li className="flex flex-col">
-                    <span className="font-medium">CGE Models</span>
-                    <p className="opacity-80">
-                      Computable General Equilibrium models simulate economy-wide impacts of shocks like tariffs, droughts, or policy changes. Uses social accounting matrices to assess effects on GDP, welfare, and sector outputs, enabling what-if analysis for strategic planning.
-                    </p>
-                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
-                      Economy-Wide
-                    </span>
-                  </li>
-                </ul>
-                <p className="mt-4 text-sm sm:text-base opacity-80">
-                  Applications: Policy evaluation, trade agreement analysis, and resilience planning for agricultural markets.
-                </p>
-              </div>
-              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white flex flex-col h-[400px]">
                 <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                   1
                 </div>
-                <FaChartLine className="text-3xl mb-4" />
-                <h2 className="text-xl sm:text-2xl font-semibold mb-4">
-                  Trade Forecasting
-                </h2>
-                <ul className="space-y-4 text-sm sm:text-base">
-                  <li className="flex flex-col">
-                    <span className="font-medium">ARIMA</span>
-                    <p className="opacity-80">
-                      A classical time-series model leveraging historical export/import and price data for accurate short- and medium-term trade forecasts. Ideal for predicting seasonal trends in agricultural markets.
-                    </p>
-                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
-                      Time-Series
-                    </span>
-                  </li>
-                  <li className="flex flex-col">
-                    <span className="font-medium">Prophet</span>
-                    <p className="opacity-80">
-                      Handles complex seasonality and trend changes, enabling robust forecasting for volatile trade data. Excels in modeling irregular patterns like weather-driven price fluctuations.
-                    </p>
-                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
-                      Seasonal
-                    </span>
-                  </li>
-                  <li className="flex flex-col">
-                    <span className="font-medium">XGBoost</span>
-                    <p className="opacity-80">
-                      A machine learning model capturing nonlinear relationships through decision trees. Predicts trade volumes under variable conditions, such as policy changes or market shocks, with high accuracy.
-                    </p>
-                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
-                      Nonlinear
-                    </span>
-                  </li>
-                </ul>
+                <FaChartLine className="text-3xl mb-4 flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4">Trade Forecasting</h2>
+                <div
+                  className="space-y-4 text-sm sm:text-base overflow-y-auto pr-2 hide-scrollbar flex-grow"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
+                >
+                  <ul className="space-y-4">
+                    <li className="flex flex-col">
+                      <span className="font-medium">ARIMA</span>
+                      <p className="opacity-80">
+                        A classical time-series model leveraging historical export/import and price data for accurate short- and medium-term trade forecasts. Ideal for predicting seasonal trends in agricultural markets.
+                      </p>
+                      <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                        Time-Series
+                      </span>
+                    </li>
+                    <li className="flex flex-col">
+                      <span className="font-medium">Prophet</span>
+                      <p className="opacity-80">
+                        Handles complex seasonality and trend changes, enabling robust forecasting for volatile trade data. Excels in modeling irregular patterns like weather-driven price fluctuations.
+                      </p>
+                      <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                        Seasonal
+                      </span>
+                    </li>
+                    <li className="flex flex-col">
+                      <span className="font-medium">XGBoost</span>
+                      <p className="opacity-80">
+                        A machine learning model capturing nonlinear relationships through decision trees. Predicts trade volumes under variable conditions, such as policy changes or market shocks, with high accuracy.
+                      </p>
+                      <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                        Nonlinear
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-3">
+
+              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white flex flex-col h-[400px]">
+                <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                  2
+                </div>
+                <FaProjectDiagram className="text-3xl mb-4 flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4">Scenario Simulation</h2>
+                <div
+                  className="space-y-4 text-sm sm:text-base overflow-y-auto pr-2 hide-scrollbar flex-grow"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
+                >
+                  <ul className="space-y-4">
+                    <li className="flex flex-col">
+                      <span className="font-medium">CGE Models</span>
+                      <p className="opacity-80">
+                        Computable General Equilibrium models simulate economy-wide impacts of shocks like tariffs, droughts, or policy changes. Uses social accounting matrices to assess effects on GDP, welfare, and sector outputs, enabling what-if analysis for strategic planning.
+                      </p>
+                      <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                        Economy-Wide
+                      </span>
+                    </li>
+                  </ul>
+                  <p className="mt-4 opacity-80">
+                    Applications: Policy evaluation, trade agreement analysis, and resilience planning for agricultural markets.
+                  </p>
+                </div>
+              </div>
+              <div className="relative bg-gradient-to-br from-[#232C3B] to-[#05192F] rounded-2xl shadow-xl p-6 text-white flex flex-col h-[400px]">
                 <div className="absolute top-4 right-4 bg-[#D3D7DF] text-[#232C3B] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                   3
                 </div>
-                <FaCogs className="text-3xl mb-4" />
-                <h2 className="text-xl sm:text-2xl font-semibold mb-4">
-                  Impact Analysis
-                </h2>
-                <ul className="space-y-4 text-sm sm:text-base">
-                  <li className="flex flex-col">
-                    <span className="font-medium">Structural Econometric</span>
-                    <p className="opacity-80">
-                      Estimates elasticities and policy effects on trade volumes, assessing ripple effects across the economy. Combines scenario outputs with statistical methods to quantify impacts like price changes or supply chain disruptions.
-                    </p>
-                    <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
-                      Policy Impact
-                    </span>
-                  </li>
-                </ul>
-                <p className="mt-4 text-sm sm:text-base opacity-80">
-                  Applications: Evaluating trade policies, subsidy impacts, and market interventions for informed decision-making.
-                </p>
+                <FaCogs className="text-3xl mb-4 flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4">Impact Analysis</h2>
+                <div
+                  className="space-y-4 text-sm sm:text-base overflow-y-auto pr-2 hide-scrollbar flex-grow"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
+                >
+                  <ul className="space-y-4">
+                    <li className="flex flex-col">
+                      <span className="font-medium">Structural Econometric</span>
+                      <p className="opacity-80">
+                        Estimates elasticities and policy effects on trade volumes, assessing ripple effects across the economy. Combines scenario outputs with statistical methods to quantify impacts like price changes or supply chain disruptions.
+                      </p>
+                      <span className="inline-flex items-center gap-1 bg-[#D3D7DF] text-[#232C3B] px-2 py-1 rounded-full text-xs font-semibold mt-2">
+                        Policy Impact
+                      </span>
+                    </li>
+                  </ul>
+                  <p className="mt-4 opacity-80">
+                    Applications: Evaluating trade policies, subsidy impacts, and market interventions for informed decision-making.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
 
         <h1 className="text-3xl sm:text-4xl font-bold text-[#232C3B] mb-10 mt-10">
           Tech Stack
@@ -547,7 +537,6 @@ export default function RoutingCardsPage() {
           />
         </div>
       </div>
-
       <section className="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#D3D7DF]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
@@ -587,7 +576,6 @@ export default function RoutingCardsPage() {
                 </div>
               </div>
             </div>
-
             <div className="flex-1 w-full flex justify-center">
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
                 <pre className="bg-[#232C3B] text-[#D3D7DF] text-xs sm:text-sm md:text-base rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono overflow-x-auto w-full sm:max-w-[280px] md:max-w-[360px] shadow-xl">
@@ -613,7 +601,8 @@ export default function RoutingCardsPage() {
     ├── root_agent.yaml
     ├── scenario.py`}
                 </pre>
-                <pre className="bg-[#232C3B] text-[#D3D7DF]  text-[11px] sm:text-xs md:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono whitespace-pre-wrap break-words w-full sm:max-w-[260px] md:max-w-[320px] shadow-xl">                  {`   ├── prompts/
+                <pre className="bg-[#232C3B] text-[#D3D7DF] text-[11px] sm:text-xs md:text-sm rounded-xl px-3 sm:px-4 md:px-6 py-3 md:py-4 leading-relaxed font-mono whitespace-pre-wrap break-words w-full sm:max-w-[260px] md:max-w-[320px] shadow-xl">
+                  {`   ├── prompts/
     │   ├── missing_data.txt
     │   ├── root_agent.txt
     │   ├── router_prompt.txt
@@ -687,7 +676,6 @@ export default function RoutingCardsPage() {
               </li>
             </ol>
           </div>
-
           <div className="w-full max-w-lg">
             <h2 className="text-3xl md:text-4xl font-bold text-[#D3D7DF] mb-4 mt-8 md:mt-0">
               Setup Instructions
@@ -804,7 +792,6 @@ export default function RoutingCardsPage() {
               with a <span className="font-mono">/healthz</span> endpoint for
               system health checks.
             </p>
-
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#232C3B]">
               Example Requests & Responses
             </h2>
@@ -816,7 +803,6 @@ export default function RoutingCardsPage() {
               analysis (e.g., scenario, forecasting, comparative, or knowledge
               base queries).
             </p>
-
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 items-start mb-6 justify-center">
               <div className="flex-1 w-full">
                 <div className="font-bold mb-1 text-[#232C3B]">Request</div>
@@ -824,7 +810,6 @@ export default function RoutingCardsPage() {
                   {`POST /query HTTP/1.1
 Host: localhost:8000
 Content-Type: application/json
-
 {
   "query": "What if maize price drops by 20% in Kenya?"
 }`}
@@ -856,7 +841,6 @@ Content-Type: application/json
                 </li>
               </ul>
             </div>
-
             <h3 className="text-lg sm:text-xl font-semibold mb-2 text-[#232C3B]">
               2. Health Check Endpoint
             </h3>

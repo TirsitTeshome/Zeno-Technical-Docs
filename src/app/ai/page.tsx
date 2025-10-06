@@ -46,7 +46,7 @@ const pipelineSteps = [
     details: (
       <div className="text-xs md:text-sm mt-2 mb-2 text-left">
         <span className="font-bold text-[#05192F]">Data Sources:</span>
-        <ul className="list-disc ml-5">
+        <ul className="list-disc ml-25 text-[#05192F] my-4">
           <li>Statista (global economics/trade)</li>
           <li>KNBS (official Kenya data)</li>
           <li>Trading Economics (real-time indicators, prices, tariffs, policies)</li>
@@ -101,7 +101,7 @@ const pipelineSteps = [
     description: (
       <>
         Converts text chunks into semantic vectors for search and ML.<br />
-        Uses Google Generative AI’s embedding model (via langchain-google-genai), with batch processing and error handling for reliability.
+        Uses Google Generative AI's embedding model (via langchain-google-genai), with batch processing and error handling for reliability.
       </>
     ),
     frameworks: [
@@ -786,7 +786,7 @@ export default function RoutingCardsPage() {
               the ASGI server, with endpoints defined in{" "}
               <span className="font-mono">zeno_agent/agent.py</span>. It
               supports JSON-based requests and responses, is Docker-ready for
-              deployment, and includes automatic API documentation via FastAPI’s
+              deployment, and includes automatic API documentation via FastAPI's
               Swagger UI. The primary endpoint is{" "}
               <span className="font-mono">/query</span> for analysis requests,
               with a <span className="font-mono">/healthz</span> endpoint for
